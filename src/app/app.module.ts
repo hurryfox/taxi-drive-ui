@@ -1,9 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule }   from '@angular/forms'; // <-- NgModel lives here
+import { FormsModule }   from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { ClientsTableComponent } from './clients-table/clients-table.component';
+
 
 @NgModule({
   declarations: [
@@ -12,7 +14,8 @@ import { ClientsTableComponent } from './clients-table/clients-table.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule // <-- import the FormsModule before binding with [(ngModel)]
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
