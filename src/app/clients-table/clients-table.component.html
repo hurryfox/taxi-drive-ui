@@ -3,7 +3,7 @@
     <h2>Clients</h2>
   </div>
   <div class="col-md-6 text-right">
-    <button type="button" class="btn btn-primary">Add</button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addClient">Add</button>
   </div>
 </div>
 
@@ -31,3 +31,65 @@
 
   </tbody>
 </table>
+
+<div id="addClient" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">
+          Add client
+        </h4>
+      </div>
+
+      <div class="modal-body">
+        <form class="form-horizontal" role="form">
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="inputLogin">Login</label>
+            <div class="col-sm-12"><input type="text" class="form-control" id="inputLogin" placeholder="Login"/>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="inputFirstName">First name</label>
+            <div class="col-sm-12"><input type="text" class="form-control" id="inputFirstName"
+                                          placeholder="First name"/>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="inputLastName">Last name</label>
+            <div class="col-sm-12"><input type="text" class="form-control" id="inputLastName" placeholder="Last name"/>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="inputBirthDate">Birth date</label>
+            <div class="col-sm-12"><input type="date" class="form-control" id="inputBirthDate"/>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="inputRidesAmount">Rides amount</label>
+            <div class="col-sm-12"><input type="number" class="form-control" id="inputRidesAmount" placeholder="1"/>
+            </div>
+          </div>
+
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" id="reset">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary" id="save">
+          Save
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
