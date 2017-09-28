@@ -19,14 +19,12 @@ export class ClientsTableComponent implements OnInit  {
     });
   }
 
-  onSubmit(form: NgForm){
+  onSubmit(form: NgForm) {
     console.log('OK');
-    let headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
-
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
     let url = 'http://localhost:8087/api/person';
 
-    this.http.put(url, JSON.stringify(form.value), /*{headers: headers}*/).subscribe(
+    this.http.put(url, JSON.stringify(form.value), {headers: headers}).subscribe(
       res => {
         console.log(res);
       },
@@ -34,8 +32,6 @@ export class ClientsTableComponent implements OnInit  {
         console.log("Error occured");
       }
     );
-    console.log('Fuck');
-
   }
 }
 
