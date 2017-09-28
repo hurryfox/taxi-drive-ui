@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {NgForm} from "@angular/forms";
 
 
 @Component({
@@ -16,6 +17,25 @@ export class ClientsTableComponent implements OnInit  {
     this.http.get('http://localhost:8087/api/person/all').subscribe(data => {
       this.clients = data;
     });
+  }
+
+  onSubmit(form: NgForm){
+    console.log('OK');
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+
+    let url = 'http://localhost:8087/api/person';
+
+    this.http.put(url, JSON.stringify(form.value), /*{headers: headers}*/).subscribe(
+      res => {
+        console.log(res);
+      },
+      err => {
+        console.log("Error occured");
+      }
+    );
+    console.log('Fuck');
+
   }
 }
 

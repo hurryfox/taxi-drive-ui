@@ -44,49 +44,47 @@
       </div>
 
       <div class="modal-body">
-        <form class="form-horizontal" role="form">
+        <form class="form-horizontal" role="form" #addMountForm="ngForm" (ngSubmit)="onSubmit(addMountForm)" >
 
           <div class="form-group">
             <label class="col-sm-2 control-label" for="inputLogin">Login</label>
-            <div class="col-sm-12"><input type="text" class="form-control" id="inputLogin" placeholder="Login"/>
+            <div class="col-sm-12"><input type="text" class="form-control" id="inputLogin" name="personLogin" placeholder="Login" ngModel/>
             </div>
           </div>
 
           <div class="form-group">
             <label class="col-sm-2 control-label" for="inputFirstName">First name</label>
-            <div class="col-sm-12"><input type="text" class="form-control" id="inputFirstName"
-                                          placeholder="First name"/>
+            <div class="col-sm-12"><input type="text" class="form-control" id="inputFirstName" name="firstName" placeholder="First name" ngModel/>
             </div>
           </div>
 
           <div class="form-group">
             <label class="col-sm-2 control-label" for="inputLastName">Last name</label>
-            <div class="col-sm-12"><input type="text" class="form-control" id="inputLastName" placeholder="Last name"/>
+            <div class="col-sm-12"><input type="text" class="form-control" id="inputLastName" name="lastName"  placeholder="Last name" ngModel/>
             </div>
           </div>
 
           <div class="form-group">
             <label class="col-sm-2 control-label" for="inputBirthDate">Birth date</label>
-            <div class="col-sm-12"><input type="date" class="form-control" id="inputBirthDate"/>
+            <div class="col-sm-12"><input type="date" class="form-control" id="inputBirthDate" name="dateOfBirth"  ngModel/>
             </div>
           </div>
 
           <div class="form-group">
             <label class="col-sm-2 control-label" for="inputRidesAmount">Rides amount</label>
-            <div class="col-sm-12"><input type="number" class="form-control" id="inputRidesAmount" placeholder="1"/>
+            <div class="col-sm-12"><input type="number" class="form-control" id="inputRidesAmount" name="ridesAmount" placeholder="1" ngModel/>
             </div>
           </div>
 
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" id="reset">
+              Close
+            </button>
+            <button type="submit" class="btn btn-primary" id="save">
+              Save
+            </button>
+          </div>
         </form>
-      </div>
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" id="reset">
-          Close
-        </button>
-        <button type="button" class="btn btn-primary" id="save">
-          Save
-        </button>
       </div>
     </div>
 
