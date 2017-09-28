@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {NgForm} from "@angular/forms";
 
-
 @Component({
   selector: 'app-clients-table',
   templateUrl: './clients-table.component.html',
