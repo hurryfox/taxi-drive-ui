@@ -16,7 +16,7 @@ export class ClientsTableComponent implements OnInit  {
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    let headers = new HttpHeaders(); //.set('Authorization', 'Bearer ' + keycloak.token);
+    let headers = new HttpHeaders().set('Authorization', 'Bearer ' + keycloak.token);
 
     this.http.get(globalUrl + '/api/client/all', {headers: headers}).subscribe(data => {
       this.clients = data;
@@ -27,7 +27,7 @@ export class ClientsTableComponent implements OnInit  {
 
 
     console.log('OK');
-    let headers = new HttpHeaders().set('Content-Type', 'application/json'); //.set('Authorization', 'Bearer ' + keycloak.token);
+    let headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', 'Bearer ' + keycloak.token);
     let url = globalUrl + '/api/client';
 
     this.http.put(url, JSON.stringify(form.value), {headers: headers}).subscribe(

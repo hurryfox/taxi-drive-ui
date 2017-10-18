@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  clientId: 'tda-ui-local'
+  clientId: 'tda-ui-local',
+  globalUrl: 'http://localhost:8087'
 };

@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Taxi Drive App</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+</head>
+<body>
+
+
+<script>
+  var globalUrl = 'http://vostok.systems/tda'
+</script>
+
+
+<script src='http://sso.vostok.systems/auth/js/keycloak.js' ></script>
+
+<script>
+  var keycloak = Keycloak({
+    url: 'http://sso.vostok.systems/auth',
+    realm: 'vostok',
+    clientId: 'tda-ui'
+  });
+  keycloak.init({onLoad: 'login-required', checkLoginIframe: false})
+    .success(function (authenticated) {
+      console.log(authenticated ? '[KEYCLOAK] Authenticated' : '[KEYCLOAK] Not authenticated');
+      loadStatic();
+    })
+    .error(function () {
+      console.log('[KEYCLOAK] Failed to execute KEYCLOAK init');
+    });
+
+  function loadStatic(url) {
+    var inlineJS = document.createElement('script');
+    inlineJS.setAttribute('src', "inline.bundle.js");
+
+    var polyfillsJS = document.createElement('script');
+    polyfillsJS.setAttribute('src', "polyfills.bundle.js");
+
+    var scriptsJS = document.createElement('script');
+    scriptsJS.setAttribute('src', "scripts.bundle.js");
+
+    var stylesJS = document.createElement('script');
+    stylesJS.setAttribute('src', "styles.bundle.js");
+
+    var vendorJS = document.createElement('script');
+    vendorJS.setAttribute('src',"vendor.bundle.js");
+
+    var mainJS = document.createElement('script');
+    mainJS.setAttribute('src', "main.bundle.js");
+
+    document.querySelector('head').appendChild(inlineJS);
+
+    inlineJS.onload = function() {
+      document.querySelector('head').appendChild(polyfillsJS);
+    };
+    polyfillsJS.onload = function() {
+      document.querySelector('head').appendChild(scriptsJS);
+    };
+    scriptsJS.onload = function() {
+      document.querySelector('head').appendChild(stylesJS);
+    };
+    stylesJS.onload = function() {
+      document.querySelector('head').appendChild(vendorJS);
+    };
+    vendorJS.onload = function() {
+      document.querySelector('head').appendChild(mainJS);
+    }
+  }
+
+</script>
+
+<script>
+  setInterval(function () {
+    keycloak.updateToken();
+  }, 10000);
+</script>
+
+<app-root>Loading...</app-root>
+
+</html>

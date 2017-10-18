@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  clientId: 'tda-ui'
+  clientId: 'tda-ui',
+  globalUrl: 'http://vostok.systems/tda'
 };
