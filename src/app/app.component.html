@@ -36,34 +36,17 @@
 
 <div class="container-fluid">
   <div class="row"><h1></h1></div>
-  <div class="row">
 
-    <div class="col col-md-2">
-      <ul class="nav flex-column">
-      <li class="nav-item">
-        <a class="nav-link active" href="#">Dashboard</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Clients</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Rides</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Statistic</a>
-      </li>
-      </ul>
+    <div class="row">
+      <app-menu></app-menu>
+      <router-outlet></router-outlet>
     </div>
-    <div class="col col-md-10">
-      <app-clients-table></app-clients-table>
-    </div>
-  </div>
 
 
   <nav class="navbar fixed-bottom navbar-light bg-faded">
 
     <div class="container">
-      <p class="pull-left"> Copyright © Footer 2014. All right reserved. </p>
+      <p class="pull-left"> Copyright © Footer 2017. All right reserved. </p>
       <div class="pull-right">
         <ul class="nav nav-pills payments">
           <li><i class="fa fa-cc-visa"></i></li>

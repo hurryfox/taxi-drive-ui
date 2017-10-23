@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {NgForm} from "@angular/forms";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { NgForm } from "@angular/forms";
 
 declare const keycloak:any;
 declare const globalUrl:any;
