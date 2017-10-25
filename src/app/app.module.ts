@@ -4,12 +4,13 @@ import { FormsModule }   from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { MenuComponent } from './menu.component';
-import { ClientsTableComponent } from './clients-table/clients-table.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { ClientsTableComponent } from './home/clients-table/clients-table.component';
+import { DashboardComponent } from './home/dashboard/dashboard.component';
 import { CONST_ROUTING } from './app.routing';
-import { RidesComponent } from './rides/rides.component';
-import { StatisticsComponent } from './statistics/statistics.component';
+import { RidesComponent } from './home/rides/rides.component';
+import { StatisticsComponent } from './home/statistics/statistics.component';
+import { HomeComponent } from './home/home.component';
+import { SettingsComponent } from './settings/settings.component';
 
 
 
@@ -17,10 +18,11 @@ import { StatisticsComponent } from './statistics/statistics.component';
   declarations: [
     AppComponent,
     ClientsTableComponent,
-    MenuComponent,
     DashboardComponent,
     RidesComponent,
     StatisticsComponent,
+    HomeComponent,
+    SettingsComponent,
 
   ],
   imports: [
