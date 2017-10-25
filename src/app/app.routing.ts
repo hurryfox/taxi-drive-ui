@@ -6,7 +6,7 @@ import { StatisticsComponent} from "./statistics/statistics.component";
 
 
 const MAINMENU_ROUTES: Routes = [
-  { path: '', redirectTo: '/weather', pathMatch: 'full' },
+  { path: '', redirectTo: '/clients-table', pathMatch: 'full' },
   { path: 'clients-table', component: ClientsTableComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'rides', component: RidesComponent },
