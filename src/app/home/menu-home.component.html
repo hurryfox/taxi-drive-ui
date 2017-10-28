@@ -1,0 +1,22 @@
+<ul class="nav flex-column">
+  <li routerLinkActive="active" class="nav-item">
+    <a [routerLink]="['/home/client-management']" class="nav-link">Client management</a>
+  </li>
+  <li routerLinkActive="active" class="nav-item">
+    <a [routerLink]="['/home/driver-management']" class="nav-link" >Driver management</a>
+  </li>
+  <li routerLinkActive="active" class="nav-item">
+    <a class="nav-link">Administrator</a>
+    <ul class="menu" role="menu" aria-labelledby="dLabel">
+      <li routerLinkActive="active" class="nav-item">
+        <a [routerLink]="['/home/administrator/clients-table']" class="item">Clients</a>
+      </li>
+      <li routerLinkActive="active" class="nav-item">
+        <a [routerLink]="['/home/administrator/rides']" class="item">Rides</a>
+      </li>
+      <li routerLinkActive="active" class="nav-item">
+        <a [routerLink]="['/home/administrator/drivers']" class="item">Drivers</a>
+      </li>
+    </ul>
+  </li>
+</ul>
