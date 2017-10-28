@@ -4,13 +4,22 @@ import { FormsModule }   from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { ClientsTableComponent } from './home/clients-table/clients-table.component';
-import { DashboardComponent } from './home/dashboard/dashboard.component';
+import { ClientsTableComponent } from './home/administrator/clients-table/clients-table.component';
+import { DriversComponent } from './home/administrator/drivers/drivers.component';
 import { CONST_ROUTING } from './app.routing';
-import { RidesComponent } from './home/rides/rides.component';
-import { StatisticsComponent } from './home/statistics/statistics.component';
+import { RidesComponent } from './home/administrator/rides/rides.component';
 import { HomeComponent } from './home/home.component';
 import { SettingsComponent } from './settings/settings.component';
+import { ClientManagementComponent } from './home/client-management/client-management.component';
+import { DriverManagementComponent } from './home/driver-management/driver-management.component';
+import { AdministratorComponent } from './home/administrator/administrator.component';
+import { TarifsComponent } from './settings/tarifs/tarifs.component';
+import { OtherComponent } from './settings/other/other.component';
+import { MenuHomeComponent } from './home/menu-home.component';
+
+
+
+
 
 
 
@@ -18,11 +27,19 @@ import { SettingsComponent } from './settings/settings.component';
   declarations: [
     AppComponent,
     ClientsTableComponent,
-    DashboardComponent,
+    DriversComponent,
     RidesComponent,
-    StatisticsComponent,
     HomeComponent,
     SettingsComponent,
+    ClientManagementComponent,
+    DriverManagementComponent,
+    AdministratorComponent,
+    TarifsComponent,
+    OtherComponent,
+    MenuHomeComponent,
+
+
+
 
   ],
   imports: [

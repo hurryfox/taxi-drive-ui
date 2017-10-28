@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
-app-clients-table {
+app-clients-table, app-home {
   width: 100%;
 }
+
+

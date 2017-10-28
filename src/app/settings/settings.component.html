@@ -1,3 +1,11 @@
-<p>
-  settings works!
-</p>
+<div class="container">
+  <div class="col col-md-2">
+    <ul class="nav flex-column">
+      <li routerLinkActive="active" class="nav-item">
+        <a [routerLink]="['/settings/tarifs']" class="nav-link">Tarifs</a>
+      </li>
+      <li routerLinkActive="active" class="nav-item"><a [routerLink]="['/settings/other']" class="nav-link" >Other</a>
+        </li>
+    </ul>
+  </div>
+</div>
