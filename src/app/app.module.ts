@@ -4,18 +4,26 @@ import { FormsModule }   from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { ClientsTableComponent } from './clients-table/clients-table.component';
+import { HeaderComponent } from './header.component';
+import { HomeComponent } from './home/home.component';
+import { SettingsComponent } from './settings/settings.component';
+import { HelpComponent } from './help/help.component';
+import { CONST_ROUTING } from './app.routing';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ClientsTableComponent
+  AppComponent,
+  HeaderComponent,
+  HomeComponent,
+  SettingsComponent,
+  HelpComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    CONST_ROUTING
   ],
   providers: [],
   bootstrap: [AppComponent]
