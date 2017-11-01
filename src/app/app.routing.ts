@@ -7,23 +7,11 @@ import {DriversDashComponent} from "./home/drivers/drivers.component";
 import {AdminDashComponent} from "./home/admin/admin.component";
 
 const MAINMENU_ROUTES: Routes = [
-  //full : makes sure the path is absolute path
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home',
-    component: HomeComponent,
-     children:[
-       {
-         path: 'clients',
-         component: ClientsDashComponent
-       },
-       {
-         path: 'drivers',
-         component: DriversDashComponent
-       },
-       {
-         path: 'admin',
-         component: AdminDashComponent
-       },
+  { path: 'home', component: HomeComponent, children:[
+       { path: 'clients', component: ClientsDashComponent },
+       { path: 'drivers', component: DriversDashComponent },
+       { path: 'admin', component: AdminDashComponent }
      ]
   },
   { path: 'settings', component: SettingsComponent },
