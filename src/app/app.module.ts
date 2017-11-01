@@ -9,20 +9,31 @@ import { HomeComponent } from './home/home.component';
 import { SettingsComponent } from './settings/settings.component';
 import { HelpComponent } from './help/help.component';
 import { CONST_ROUTING } from './app.routing';
-
+import {ClientsDashComponent} from "./home/clients/clients.component";
+import {AdminDashComponent} from "./home/admin/admin.component";
+import {DriversDashComponent} from "./home/drivers/drivers.component";
+import {HomeMenuComponent} from "./home/menu.component";
 
 @NgModule({
   declarations: [
   AppComponent,
   HeaderComponent,
+
   HomeComponent,
+  ClientsDashComponent,
+  DriversDashComponent,
+  AdminDashComponent,
+  HomeMenuComponent,
+
   SettingsComponent,
+
   HelpComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+
     CONST_ROUTING
   ],
   providers: [],
