@@ -1,18 +1,15 @@
 import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-dash',
   styles: [],
   template: `
 
-    <div class="container-fluid">
-      <div class="row"><h1></h1></div>
+    <div class="container-fluid" >
       <div class="row">
-
-        <div class="col col-md-2">
-          <app-home-menu></app-home-menu>
+        <div class="col col-md-2 menu">
+          <app-dash-menu></app-dash-menu>
         </div>
-
         <div class="col col-md-10">
           <router-outlet></router-outlet>
         </div>
@@ -21,7 +18,7 @@ import {Component, OnInit} from '@angular/core';
     </div>
   `
 })
-export class HomeComponent implements OnInit {
+export class DashComponent implements OnInit {
 
   constructor() {
   }

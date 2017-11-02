@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-home-drivers',
+  selector: 'app-dash-clients',
   styles: [],
   template:`    
-    <h1>drivers component</h1>
+    <h1>clients component</h1>
   `
 })
-export class DriversDashComponent implements OnInit {
+export class ClientsDashComponent implements OnInit {
 
   constructor() { }
 

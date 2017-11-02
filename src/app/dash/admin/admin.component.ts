@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-home-clients',
+  selector: 'app-dash-admin',
   styles: [],
   template:`    
-    <h1>clients component</h1>
+    <h1>admin component</h1>
   `
 })
-export class ClientsDashComponent implements OnInit {
+export class AdminDashComponent implements OnInit {
 
   constructor() { }
 

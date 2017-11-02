@@ -1,14 +1,14 @@
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from "./home/home.component";
+import { DashComponent } from "./dash/dash.component";
 import { SettingsComponent } from "./settings/settings.component";
 import { HelpComponent } from "./help/help.component";
-import {ClientsDashComponent} from "./home/clients/clients.component";
-import {DriversDashComponent} from "./home/drivers/drivers.component";
-import {AdminDashComponent} from "./home/admin/admin.component";
+import {ClientsDashComponent} from "./dash/clients/clients.component";
+import {DriversDashComponent} from "./dash/drivers/drivers.component";
+import {AdminDashComponent} from "./dash/admin/admin.component";
 
 const MAINMENU_ROUTES: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent, children:[
+  { path: '', redirectTo: '/dash', pathMatch: 'full' },
+  { path: 'dash', component: DashComponent, children:[
        { path: 'clients', component: ClientsDashComponent },
        { path: 'drivers', component: DriversDashComponent },
        { path: 'admin', component: AdminDashComponent }
