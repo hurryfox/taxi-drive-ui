@@ -11,7 +11,7 @@ import {Component, OnInit} from '@angular/core';
         <div class="col col-md-12">
           <form>
 
-            <h3>Phone number</h3>
+            <h5>Phone number</h5>
 
             <div class="row">
               <div class="col col-md-1">
@@ -38,11 +38,11 @@ import {Component, OnInit} from '@angular/core';
         </div>
       </div>
 
-      <div class="row mt-2 block">
-        <div class="col col-md-3">
+      <div class="row mt-2 ">
+        <div class="col col-md-3 block">
           <form>
 
-            <h3>User board</h3>
+            <h5>User board</h5>
 
             <div class="form-group">
               <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Client name">
@@ -52,21 +52,41 @@ import {Component, OnInit} from '@angular/core';
               <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Client surname">
             </div>
 
-            <div class="form-group">
+            <div class="form-group float-right">
               <button type="submit" class="btn btn-primary">Submit</button>
             </div>
           </form>
         </div>
 
-        <div class="col col-md-8 ml-3">
-          <h3>Short user information</h3>
+        <div class="col ml-3 block">
+          <h5>Short user information</h5>
+
+          <div class="row">
+            <div class="col col-md-6">
+              <div class="alert alert-danger" role="alert">
+                User phone number in DB, but name and surname not provided
+              </div>
+              
+              <div class="alert alert-success" role="alert">
+                The next ride is free, total rides amount <b>9</b> 
+              </div>
+              
+            </div>
+            <div class="col col-md-6">
+              <div class="alert alert-info" role="alert">
+                Maybe here should be placed table with last successful rides
+              </div>
+            </div>
+
+          </div>
+
         </div>
 
       </div>
 
       <div class="row mt-2 block">
         <div class="col col-md-12">
-          <h3>Ride board</h3>
+          <h5>Ride board</h5>
         </div>
       </div>
     </div>

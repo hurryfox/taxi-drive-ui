@@ -5,3 +5,7 @@
 .block {
   background-color: #f8f9fa;
 }
+
+.alert-custom {
+  padding: 0.0rem 1.25rem !important;
+}
