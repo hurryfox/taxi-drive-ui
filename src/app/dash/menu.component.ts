@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-dash-menu',
   styles: [],
   template: `
-    <ul class="nav flex-column">
+    <ul class="nav flex-column menu">
       <li class="nav-item">
         <a class="nav-link active" href="#" [routerLink]="['/dash/clients']">Client management</a>
       </li>

@@ -7,7 +7,7 @@ import {Component, OnInit} from '@angular/core';
 
     <div class="container-fluid">
 
-      <div class="row mt-2">
+      <div class="row block">
         <div class="col col-md-12">
           <form>
 
@@ -38,7 +38,7 @@ import {Component, OnInit} from '@angular/core';
         </div>
       </div>
 
-      <div class="row mt-2">
+      <div class="row mt-2 block">
         <div class="col col-md-3">
           <form>
 
@@ -52,8 +52,9 @@ import {Component, OnInit} from '@angular/core';
               <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Client surname">
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
-
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
           </form>
         </div>
 
@@ -63,7 +64,7 @@ import {Component, OnInit} from '@angular/core';
 
       </div>
 
-      <div class="row mt-3">
+      <div class="row mt-2 block">
         <div class="col col-md-12">
           <h3>Ride board</h3>
         </div>

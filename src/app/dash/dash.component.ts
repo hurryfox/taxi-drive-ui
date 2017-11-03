@@ -6,8 +6,8 @@ import {Component, OnInit} from '@angular/core';
   template: `
 
     <div class="container-fluid" >
-      <div class="row">
-        <div class="col col-md-2 menu">
+      <div class="row ml-0 mt-2">
+        <div class="col col-md-2">
           <app-dash-menu></app-dash-menu>
         </div>
         <div class="col col-md-10">
