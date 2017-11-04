@@ -53,7 +53,8 @@ import {Component, OnInit} from '@angular/core';
             </div>
 
             <div class="form-group float-right">
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary mr-2 btn-fix-size">Reject</button>
+              <button type="submit" class="btn btn-primary btn-fix-size">Submit</button>
             </div>
           </form>
         </div>
