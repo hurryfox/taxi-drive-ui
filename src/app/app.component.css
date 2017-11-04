@@ -9,3 +9,7 @@
 .alert-custom {
   padding: 0.0rem 1.25rem !important;
 }
+
+.btn-fix-size {
+  width: 78px !important;
+}
