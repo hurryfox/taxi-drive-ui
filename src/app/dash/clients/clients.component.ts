@@ -39,7 +39,7 @@ import {Component, OnInit} from '@angular/core';
       </div>
 
       <div class="row mt-2 ">
-        <div class="col col-md-3 block">
+        <div class="col col-md-4 block">
           <form>
 
             <h5>User board</h5>
@@ -59,7 +59,7 @@ import {Component, OnInit} from '@angular/core';
           </form>
         </div>
 
-        <div class="col ml-3 block">
+        <div class="col ml-2 block">
           <h5>Short user information</h5>
 
           <div class="row">
