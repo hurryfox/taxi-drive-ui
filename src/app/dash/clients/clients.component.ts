@@ -7,14 +7,14 @@ import {Component, OnInit} from '@angular/core';
 
     <div class="container-fluid">
 
-      <div class="row block">
-        <div class="col col-md-12">
+      <div class="row ">
+        <div class="col col-md-4 block">
           <form>
 
             <h5>Phone number</h5>
 
             <div class="row">
-              <div class="col col-md-1">
+              <div class="col col-md-3">
                 <div class="form-group">
                   <select class="form-control" id="exampleSelect1">
                     <option>+7</option>
@@ -23,7 +23,7 @@ import {Component, OnInit} from '@angular/core';
                 </div>
               </div>
 
-              <div class="col col-md-4">
+              <div class="col col-md-7">
                 <div class="form-group">
                   <input type="tel" class="form-control" id="exampleInputEmail1" placeholder="Client phone number">
                 </div>
