@@ -13,6 +13,7 @@ import {ClientsDashComponent} from "./dash/clients/clients.component";
 import {AdminDashComponent} from "./dash/admin/admin.component";
 import {DriversDashComponent} from "./dash/drivers/drivers.component";
 import {HomeMenuComponent} from "./dash/menu.component";
+import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import {HomeMenuComponent} from "./dash/menu.component";
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    AngularFontAwesomeModule,
 
     CONST_ROUTING
   ],

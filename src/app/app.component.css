@@ -13,3 +13,16 @@
 .btn-fix-size {
   width: 78px !important;
 }
+
+.color-normal {
+  color: #02ab08;
+}
+.color-info {
+  color: #007bff;
+}
+.color-alert {
+  color: #d8b400;
+}
+.color-wrong {
+  color: #c10307;
+}
