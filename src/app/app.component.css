@@ -26,3 +26,26 @@
 .color-wrong {
   color: #c10307;
 }
+
+
+.table-gray {
+  color: #565a5a;
+}
+.table-margin {
+  padding:0 15px 0 15px;
+}
+.table-margin-1 {
+  padding:0 10px 0 25px;
+}
+
+.table-bl {
+  border-left:1px solid #d4d9d2;
+}
+
+h5 {
+  color: #484c4c;
+}
+
+h6 {
+  color: #484c4c;
+}

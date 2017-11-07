@@ -25,7 +25,7 @@ import { Component, OnInit } from '@angular/core';
 
         <form class="form-inline my-2 my-lg-0">
           <div class="btn-group">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">m.klimenko</button>
             <div class="dropdown-menu dropdown-menu-right">
               <button class="dropdown-item" type="button" href="#">Logout</button>
             </div>
