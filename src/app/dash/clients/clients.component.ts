@@ -80,22 +80,6 @@ import {Component, OnInit} from '@angular/core';
               </tr>
             </table>
 
-
-            <!-- 
-             <div>
-               <i class="fa fa-lg fa-check color-normal"></i> normal<br>
-             </div>
-             <div>
-               <i class="fa fa-lg fa-info color-info"></i> info<br>
-             </div>
-             <div>
-               <i class="fa fa-lg fa-exclamation color-alert"></i> alert<br>
-             </div>
-             <div>
-               <i class="fa fa-lg fa-times color-wrong"></i> wrong<br>
-             </div>-->
-
-
           </div>
 
         </div>
@@ -232,18 +216,65 @@ import {Component, OnInit} from '@angular/core';
 
 
         <div class="row">
-          <div class="col col-md-4 block">
-            <li><a href="#" data-toggle="collapse" data-target="#demo">Directory <span class="caret"></span></a></li>
+          <div class="col col-md-4 block text-center">
+            <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#extra-panel"><i
+              class="fa fa-unsorted fa-lg"></i><span class="caret"></span></button>
           </div>
         </div>
 
-        <div class="row">
-          <div class="col col-md-4 block">
-            <div id="demo" class="collapse">Expander Stuff</div>
+        <div class="collapse" id="extra-panel">
+          <div class="row">
+
+            <div class="col col-md-2 block">
+              <form>
+                <div class="form-group">
+                  <input type="datetime-local" class="form-control" id="exampleInputEmail1">
+                  <small id="emailHelp" class="form-text text-muted">Ride time</small>
+                </div>
+                
+                <div class="form-group">
+                  <input type="number" class="form-control" id="exampleInputEmail1" placeholder="Men in car">
+                </div>
+                
+                
+                <div class="form-group">
+                  <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Dist from">
+                </div>
+              </form>
+            </div>
+
+            <div class="col col-md-2 block">
+              <form>
+                <div class="form-group">
+                  <select class="form-control" id="exampleSelect1">
+                    <option>N</option>
+                    <option>Y</option>
+                  </select>
+                  <small id="emailHelp" class="form-text text-muted">Prepaid</small>
+                </div>
+
+                <div class="form-group">
+                  <input type="number" class="form-control" id="exampleInputEmail1" placeholder="Children in car">
+                </div>
+
+                <div class="form-group">
+                  <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Dist to">
+                </div>
+              </form>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col col-md-4 block">
+              <form>
+                <div class="form-group">
+                  <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Comment">
+                </div>
+              </form>
+            </div>
           </div>
         </div>
-        
-        
+
         <div class="row">
           <div class="col col-md-2 block">
             Ride price: <b>120</b>

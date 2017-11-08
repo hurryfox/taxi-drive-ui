@@ -49,3 +49,7 @@ h5 {
 h6 {
   color: #484c4c;
 }
+
+.fa-border-r {
+  padding:0 10px 0 0;
+}
