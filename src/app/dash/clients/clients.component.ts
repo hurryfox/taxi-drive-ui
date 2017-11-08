@@ -225,14 +225,39 @@ import {Component, OnInit} from '@angular/core';
                 <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Building">
               </div>
 
-              <div class="form-group float-right">
-                <button type="submit" class="btn btn-primary mr-2 btn-fix-size">Price</button>
-                <button type="submit" class="btn btn-primary btn-fix-size">Submit</button>
-              </div>
 
             </form>
           </div>
         </div>
+
+
+        <div class="row">
+          <div class="col col-md-4 block">
+            <li><a href="#" data-toggle="collapse" data-target="#demo">Directory <span class="caret"></span></a></li>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col col-md-4 block">
+            <div id="demo" class="collapse">Expander Stuff</div>
+          </div>
+        </div>
+        
+        
+        <div class="row">
+          <div class="col col-md-2 block">
+            Ride price: <b>120</b>
+          </div>
+          <div class="col col-md-2 block">
+            <form>
+              <div class="form-group float-right">
+                <button type="submit" class="btn btn-primary mr-2 btn-fix-size">Price</button>
+                <button type="submit" class="btn btn-primary btn-fix-size">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
       </div>
     </div>
   `
