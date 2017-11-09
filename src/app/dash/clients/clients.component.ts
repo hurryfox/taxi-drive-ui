@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {$} from "protractor";
 
 @Component({
   selector: 'app-dash-clients',
@@ -281,7 +282,7 @@ import {Component, OnInit} from '@angular/core';
             </div>
           </div>
 
-          <div class="row ">
+          <div class="row">
             <div class="col col-md-12">
               <table class="table table-sm table-hover table-gray">
                 <thead>
@@ -294,8 +295,8 @@ import {Component, OnInit} from '@angular/core';
                 </tr>
                 </thead>
                 <tbody *ngFor="let ride of rides">
-                <tr>
-                  <th scope="row">{{ride.id}}</th>
+                <tr data-toggle="modal" data-target="#orderModal">
+                  <th>{{ride.id}}</th>
                   <td>{{ride.dateIn}}</td>
                   <td>{{ride.from}}</td>
                   <td>{{ride.to}}</td>
@@ -309,6 +310,24 @@ import {Component, OnInit} from '@angular/core';
       </div>
 
     </div>
+
+
+    <div id="orderModal" class="modal fade" role="dialog" aria-labelledby="orderModal" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <h3>Order</h3>
+          </div>
+          <div id="orderDetails" class="modal-body"></div>
+          <div id="orderItems" class="modal-body"></div>
+          <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
   `
 })
 export class ClientsDashComponent implements OnInit {
@@ -342,7 +361,6 @@ export class ClientsDashComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }
 
 
