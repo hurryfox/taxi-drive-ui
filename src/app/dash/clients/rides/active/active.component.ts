@@ -34,6 +34,9 @@ import {Component, OnInit} from '@angular/core';
         </table>
       </div>
     </div>
+    
+    <!--modal components-->
+    <rides-active-modal></rides-active-modal>
   `
 })
 export class RidesActiveComponent implements OnInit {

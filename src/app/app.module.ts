@@ -20,6 +20,7 @@ import {ValidationNumberComponent} from "./dash/clients/validation/number/number
 import {ValidationInformationComponent} from "./dash/clients/validation/information/information.component";
 import {ValidationAdditionComponent} from "./dash/clients/validation/addition/addition.component";
 import {RidesAdditionComponent} from "./dash/clients/rides/addition/addition.component";
+import {ActiveModalComponent} from "./dash/clients/rides/active/modal.component";
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import {RidesAdditionComponent} from "./dash/clients/rides/addition/addition.com
   ClientsDashComponent,
   RidesPreviousComponent,
   RidesActiveComponent,
+  ActiveModalComponent,
   RidesAdditionComponent,
   ValidationNumberComponent,
   ValidationInformationComponent,
