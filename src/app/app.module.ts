@@ -14,6 +14,12 @@ import {AdminDashComponent} from "./dash/admin/admin.component";
 import {DriversDashComponent} from "./dash/drivers/drivers.component";
 import {HomeMenuComponent} from "./dash/menu.component";
 import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
+import {RidesPreviousComponent} from "./dash/clients/rides/previous/previous.component";
+import {RidesActiveComponent} from "./dash/clients/rides/active/active.component";
+import {ValidationNumberComponent} from "./dash/clients/validation/number/number.component";
+import {ValidationInformationComponent} from "./dash/clients/validation/information/information.component";
+import {ValidationAdditionComponent} from "./dash/clients/validation/addition/addition.component";
+import {RidesAdditionComponent} from "./dash/clients/rides/addition/addition.component";
 
 @NgModule({
   declarations: [
@@ -21,7 +27,15 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awes
   HeaderComponent,
 
   DashComponent,
+
   ClientsDashComponent,
+  RidesPreviousComponent,
+  RidesActiveComponent,
+  RidesAdditionComponent,
+  ValidationNumberComponent,
+  ValidationInformationComponent,
+  ValidationAdditionComponent,
+
   DriversDashComponent,
   AdminDashComponent,
   HomeMenuComponent,
