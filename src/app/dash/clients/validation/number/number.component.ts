@@ -64,16 +64,20 @@ export class ValidationNumberComponent implements OnInit {
   }
 
   onSubmit(form: any): void {
-    var clientId;
-    if (form.clientNumType.numberCode == 'local') {
-      clientId = form.clientNumber
-    } else {
-      clientId = form.clientNumType.numberCode + form.clientNumber
-    }
+    if(form.clientNumber) {
+      var clientId;
+      if (form.clientNumType.numberCode == 'local') {
+        clientId = form.clientNumber
+      } else {
+        clientId = form.clientNumType.numberCode + form.clientNumber
+      }
 
-    this.http.get('http://localhost:8087/api/client/check/' + clientId).subscribe(data => {
-      this.service.onMainEvent.emit(data);
-    });
+      this.http.get('http://localhost:8087/api/client/check/' + clientId).subscribe(data => {
+        this.service.onMainEvent.emit(data);
+      });
+    } else {
+      this.service.onAlertEvent.emit({alertType: 'error', alertMessage : 'Enter phone number'});
+    }
   }
 }
 

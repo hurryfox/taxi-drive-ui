@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {SharedService} from "./dash/clients/shared.service";
 
 @Component({
   selector: 'app-header',
@@ -24,6 +25,16 @@ import { Component, OnInit } from '@angular/core';
         </ul>
 
         <form class="form-inline my-2 my-lg-0">
+          <div *ngIf="alertType == 'error'" class="mr-4 color-wrong" role="alert">
+            <i class="fa fa-lg fa-exclamation-triangle color-wrong"></i>
+              {{alertMessage}}
+          </div>
+
+          <div *ngIf="alertType == 'ok'" class="mr-4 color-normal" role="alert">
+            <i class="fa fa-lg fa-check color-normal"></i>
+            {{alertMessage}}
+          </div>
+          
           <div class="btn-group">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">m.klimenko</button>
             <div class="dropdown-menu dropdown-menu-right">
@@ -37,9 +48,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  alertType: string = 'none';
+  alertMessage: string = '';
+
+  constructor(private service: SharedService) {
+    service.onAlertEvent.subscribe(
+      (data) => {
+        this.alertType = data.alertType;
+        this.alertMessage = data.alertMessage;
+
+        setTimeout(() => { this.alertType = 'none'; }, 3000);
+      }
+    );
+  }
 
   ngOnInit() {
   }
-
 }
