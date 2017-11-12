@@ -21,6 +21,7 @@ import {ValidationInformationComponent} from "./dash/clients/validation/informat
 import {ValidationAdditionComponent} from "./dash/clients/validation/addition/addition.component";
 import {RidesAdditionComponent} from "./dash/clients/rides/addition/addition.component";
 import {ActiveModalComponent} from "./dash/clients/rides/active/modal.component";
+import {SharedService} from "./dash/clients/shared.service";
 
 @NgModule({
   declarations: [
@@ -55,7 +56,7 @@ import {ActiveModalComponent} from "./dash/clients/rides/active/modal.component"
 
     CONST_ROUTING
   ],
-  providers: [],
+  providers: [SharedService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

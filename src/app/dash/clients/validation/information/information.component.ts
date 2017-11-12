@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {SharedService} from "../../shared.service";
 
 @Component({
   selector: 'clients-validation-information',
@@ -34,12 +35,18 @@ import {Component, OnInit} from '@angular/core';
 })
 export class ValidationInformationComponent implements OnInit {
 
-  constructor() {
+  onMain: any = {};
+
+  constructor(private service: SharedService) {
+    service.onMainEvent.subscribe(
+      (onMain) => {
+        this.onMain = onMain;
+        console.log('in information', onMain)
+      }
+    );
   }
 
   ngOnInit() {
   }
 
 }
-
-
