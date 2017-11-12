@@ -18,7 +18,6 @@ import {RidesPreviousComponent} from "./dash/clients/rides/previous/previous.com
 import {RidesActiveComponent} from "./dash/clients/rides/active/active.component";
 import {ValidationNumberComponent} from "./dash/clients/validation/number/number.component";
 import {ValidationInformationComponent} from "./dash/clients/validation/information/information.component";
-import {ValidationAdditionComponent} from "./dash/clients/validation/addition/addition.component";
 import {RidesAdditionComponent} from "./dash/clients/rides/addition/addition.component";
 import {ActiveModalComponent} from "./dash/clients/rides/active/modal.component";
 import {SharedService} from "./dash/clients/shared.service";
@@ -37,7 +36,6 @@ import {SharedService} from "./dash/clients/shared.service";
   RidesAdditionComponent,
   ValidationNumberComponent,
   ValidationInformationComponent,
-  ValidationAdditionComponent,
 
   DriversDashComponent,
   AdminDashComponent,

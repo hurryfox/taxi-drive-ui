@@ -3,7 +3,7 @@ import {Component, OnInit} from '@angular/core';
 @Component({
   selector: 'app-dash-clients',
   styles: [],
-  template: `    
+  template: `
     <div class="container-fluid">
       <div class="row">
         <div class="col col-md-4 block">
@@ -14,21 +14,22 @@ import {Component, OnInit} from '@angular/core';
         </div>
       </div>
 
-      <div class="row mt-2 ">
-        <div class="col col-md-4 block">
-          <clients-validation-addition></clients-validation-addition>
-        </div>
-        <div class="col ml-2 block">
-          <clients-rides-previous></clients-rides-previous>
-        </div>
-      </div>
-
       <div class="row">
         <div class="col col-md-4">
           <clients-rides-addition></clients-rides-addition>
         </div>
-        <div class="col ml-2 mt-2 block">
-          <clients-rides-active></clients-rides-active>
+        <div class="col ml-2">
+          <div class="row mt-2">
+            <div class="col block">
+              <clients-rides-previous></clients-rides-previous>
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col block">
+              <clients-rides-active></clients-rides-active>
+            </div>
+          </div>
         </div>
       </div>
     </div>

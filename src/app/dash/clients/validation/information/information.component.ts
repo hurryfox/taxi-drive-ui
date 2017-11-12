@@ -71,7 +71,7 @@ export class ValidationInformationComponent implements OnInit {
     if(data.clientLogin) { this.numberInBase = true }
     else { this.numberInBase = false }
 
-    if(data.lastName) { this.userInBase = true }
+    if(data.firstName) { this.userInBase = true }
     else { this.userInBase = false }
 
     if(data.clientType == 'vip') { this.vipUser = true }
