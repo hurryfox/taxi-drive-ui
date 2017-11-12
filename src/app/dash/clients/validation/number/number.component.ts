@@ -64,8 +64,6 @@ export class ValidationNumberComponent implements OnInit {
   }
 
   onSubmit(form: any): void {
-    console.log('submitted value:', form.clientNumType.numberCode == 'local');
-
     var clientId;
     if (form.clientNumType.numberCode == 'local') {
       clientId = form.clientNumber
@@ -74,7 +72,6 @@ export class ValidationNumberComponent implements OnInit {
     }
 
     this.http.get('http://localhost:8087/api/client/check/' + clientId).subscribe(data => {
-      console.log('response', data);
       this.service.onMainEvent.emit(data);
     });
   }
