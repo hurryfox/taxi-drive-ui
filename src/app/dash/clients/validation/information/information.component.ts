@@ -13,8 +13,8 @@ import {SharedService} from "../../shared.service";
           <i *ngIf="numberInBase == false" class="fa fa-lg fa-times color-wrong"></i>
         </td>
         <td class="table-margin">Number in base</td>
-        <td class="table-margin-1 table-bl">Name</td>
-        <td><b>{{clientInfo.firstName}}</b></td>
+        <td class="table-margin-1 table-bl">Phone number</td>
+        <td><b>{{clientInfo.clientLogin}}</b></td>
       </tr>
       <tr>
         <td align="center">
@@ -22,8 +22,8 @@ import {SharedService} from "../../shared.service";
           <i *ngIf="userInBase == false" class="fa fa-lg fa-times color-wrong"></i>
         </td>
         <td class="table-margin">User in base</td>
-        <td class="table-margin-1 table-bl">Surname</td>
-        <td><b>{{clientInfo.lastName}}</b></td>
+        <td class="table-margin-1 table-bl">Name</td>
+        <td><b>{{clientInfo.firstName}}</b></td>
       </tr>
       <tr>
         <td align="center">
@@ -31,8 +31,8 @@ import {SharedService} from "../../shared.service";
           <i *ngIf="vipUser == false" class="fa fa-lg fa-times color-wrong"></i>
         </td>
         <td class="table-margin">VIP user</td>
-        <td class="table-margin-1 table-bl">Rides amount</td>
-        <td><b>{{clientInfo.ridesAmount}}</b></td>
+        <td class="table-margin-1 table-bl">Surname</td>
+        <td><b>{{clientInfo.lastName}}</b></td>
       </tr>
       <tr>
         <td align="center">
@@ -40,7 +40,8 @@ import {SharedService} from "../../shared.service";
           <i *ngIf="nextRideFree == false" class="fa fa-lg fa-times color-wrong"></i>
         </td>
         <td class="table-margin">Next ride free</td>
-        <td class="table-margin-1 table-bl"></td>
+        <td class="table-margin-1 table-bl">Rides amount</td>
+        <td><b>{{clientInfo.ridesAmount}}</b></td>
       </tr>
     </table>
   `
