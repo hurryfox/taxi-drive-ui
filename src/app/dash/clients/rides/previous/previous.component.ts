@@ -42,8 +42,8 @@ export class RidesPreviousComponent implements OnInit {
   constructor(private service: SharedService) {
     service.onClientEvent.subscribe(
       (data) => {
-        this.previousRides = data.previousRides;
-        console.log('previousRides', data.previousRides)
+        this.previousRides = data.clientData.previousRides;
+        console.log('previousRides', data.clientData.previousRides)
       }
     );
   }
@@ -51,7 +51,6 @@ export class RidesPreviousComponent implements OnInit {
   ngOnInit() {
     console.log(this.previousRides)
   }
-
 }
 
 

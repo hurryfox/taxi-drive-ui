@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {SharedService} from "../../shared.service";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'clients-rides-addition',
@@ -18,7 +19,8 @@ import {SharedService} from "../../shared.service";
           <h6>From</h6>
 
           <div class="form-group">
-            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="State">
+            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="State" name="fromState"
+                   ngModel>
           </div>
 
           <div class="form-group">
@@ -111,11 +113,11 @@ import {SharedService} from "../../shared.service";
 
       <div class="row">
         <div class="col col-md-6 block">
-          Ride price: <b>120</b>
+          <div *ngIf="priceEvaluationData.price">Ride price: <b>{{priceEvaluationData.price}}</b></div>
         </div>
         <div class="col col-md-6 block">
           <div class="form-group float-right">
-            <button type="price" class="btn btn-primary mr-2 btn-fix-size">Price</button>
+            <button type="button" class="btn btn-primary mr-2 btn-fix-size" (click)="onPrice(f.value)">Price</button>
             <button type="submit" class="btn btn-primary btn-fix-size">Submit</button>
           </div>
         </div>
@@ -126,11 +128,17 @@ import {SharedService} from "../../shared.service";
 
 export class RidesAdditionComponent implements OnInit {
   clientInfo: any = {};
+  priceEvaluationData: any = {};
 
-  constructor(private service: SharedService) {
+  constructor(private service: SharedService, private http: HttpClient,) {
     service.onClientEvent.subscribe(
       (data) => {
         this.clientInfo = data;
+      }
+    );
+    service.priceEvaluationData.subscribe(
+      (data) => {
+        this.priceEvaluationData = data;
       }
     );
   }
@@ -139,13 +147,41 @@ export class RidesAdditionComponent implements OnInit {
 
   }
 
-  onSubmit(form: any): void {
-    if(!this.clientInfo.clientLogin) {
-      this.service.onAlertEvent.emit({alertType: 'error', alertMessage : 'Enter phone number'});
+  onPrice(form: any): void {
+    if (!this.clientInfo.formClientId) {
+      this.service.onAlertEvent.emit({alertType: 'error', alertMessage: 'Enter phone number'});
+    } else {
+      var ride: any = {
+        clientLogin: this.clientInfo.formClientId,
+        fromAddress: {
+          state: "r",
+          city: "r",
+          street: "r",
+          building: "r"
+        },
+        toAddress: {
+          state: "r",
+          city: "r",
+          street: "r",
+          building: "r"
+        },
+        adultInCar: 8,
+        childrenInCar: 8
+      };
+
+      this.http.post('http://localhost:8087/api/ride/evaluate', ride)
+        .subscribe(data => {
+          this.service.priceEvaluationData.emit(data);
+        });
     }
+  }
 
-
-    console.log('in ride addition', this.clientInfo)
+  onSubmit(form: any): void {
+    if (!this.clientInfo.clientLogin) {
+      this.service.onAlertEvent.emit({alertType: 'error', alertMessage: 'Enter phone number'});
+    }
+    console.log('onSubmit client', this.clientInfo);
+    console.log('onSubmit form', form)
   }
 }
 

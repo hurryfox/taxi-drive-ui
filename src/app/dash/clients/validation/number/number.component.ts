@@ -65,19 +65,23 @@ export class ValidationNumberComponent implements OnInit {
 
   onSubmit(form: any): void {
     if(form.clientNumber) {
-      var clientId;
+      var formClientId;
       if (form.clientNumType.numberCode == 'local') {
-        clientId = form.clientNumber
+        formClientId = form.clientNumber
       } else {
-        clientId = form.clientNumType.numberCode + form.clientNumber
+        formClientId = form.clientNumType.numberCode + form.clientNumber
       }
 
-      this.http.get('http://localhost:8087/api/client/check/' + clientId).subscribe(data => {
-        this.service.onClientEvent.emit(data);
+      this.service.onClientEvent.emit({inProcess: true, clientData: {}, formClientId : null});
+
+      this.http.get('http://localhost:8087/api/client/check/' + formClientId).subscribe(data => {
+        this.service.onClientEvent.emit({inProcess: false, clientData: data, formClientId : formClientId});
       });
     } else {
+      this.service.onClientEvent.emit({inProcess: false, clientData: {}, formClientId : null});
       this.service.onAlertEvent.emit({alertType: 'error', alertMessage : 'Enter phone number'});
     }
+    this.service.priceEvaluationData.emit({});
   }
 }
 
