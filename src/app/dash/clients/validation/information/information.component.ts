@@ -55,7 +55,7 @@ export class ValidationInformationComponent implements OnInit {
   nextRideFree: boolean = false;
 
   constructor(private service: SharedService) {
-    service.onMainEvent.subscribe(
+    service.onClientEvent.subscribe(
       (data) => {
         this.clientInfo = data;
         this.computeLabels(data)

@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {SharedService} from "../../shared.service";
 
 @Component({
   selector: 'clients-rides-previous',
@@ -15,43 +16,40 @@ import {Component, OnInit} from '@angular/core';
         <table class="table table-sm table-hover table-gray">
           <thead>
           <tr>
-            <th>#</th>
-            <th>Ride in</th>
+            <th>Date in</th>
             <th>From</th>
             <th>To</th>
           </tr>
           </thead>
-          <tbody>
+          <tbody *ngFor="let ride of previousRides">
           <tr>
-            <th scope="row">1</th>
-            <td>07-11-2017</td>
-            <td>Спасск-Дальний Парковая 29/1</td>
-            <td>Спасск-Дальний Советская 108</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>04-11-2017</td>
-            <td>Спасск-Дальний Советская 104</td>
-            <td>Владивосток Аэропорт</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>01-11-2017</td>
-            <td>Спасск-Дальний Красногвардейская 10</td>
-            <td>Спасск-Дальний Борисова 16</td>
+            <td>{{ride.dateIn}}</td>
+            <td>{{ride.fromAddress.state}} {{ride.fromAddress.city}} {{ride.fromAddress.street}} {{ride.fromAddress.building}}</td>
+            <td>{{ride.toAddress.state}} {{ride.toAddress.city}} {{ride.toAddress.street}} {{ride.toAddress.building}}</td>
           </tr>
           </tbody>
         </table>
+        <p *ngIf="previousRides == undefined || previousRides.length == 0" align="center">No information about previous rides</p>
       </div>
     </div>
+    
   `
 })
 export class RidesPreviousComponent implements OnInit {
 
-  constructor() {
+  previousRides: any = [];
+
+  constructor(private service: SharedService) {
+    service.onClientEvent.subscribe(
+      (data) => {
+        this.previousRides = data.previousRides;
+        console.log('previousRides', data.previousRides)
+      }
+    );
   }
 
   ngOnInit() {
+    console.log(this.previousRides)
   }
 
 }

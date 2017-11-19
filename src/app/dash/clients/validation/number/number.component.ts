@@ -73,7 +73,7 @@ export class ValidationNumberComponent implements OnInit {
       }
 
       this.http.get('http://localhost:8087/api/client/check/' + clientId).subscribe(data => {
-        this.service.onMainEvent.emit(data);
+        this.service.onClientEvent.emit(data);
       });
     } else {
       this.service.onAlertEvent.emit({alertType: 'error', alertMessage : 'Enter phone number'});
