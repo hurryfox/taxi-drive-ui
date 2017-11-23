@@ -48,11 +48,16 @@ export class RidesActiveComponent implements OnInit {
   }
 
   ngOnInit() {
-    setInterval(() => {
-      this.http.get('http://localhost:8087/api/ride/active').subscribe(data => {
-        this.rides = data;
-      });
-    }, 10000);
+    this.getActiveRides();
+     setInterval(() => {
+       this.getActiveRides()
+     }, 10000);
+  }
+
+  getActiveRides(){
+    this.http.get('http://localhost:8087/api/ride/active').subscribe(data => {
+      this.rides = data;
+    });
   }
 }
 
