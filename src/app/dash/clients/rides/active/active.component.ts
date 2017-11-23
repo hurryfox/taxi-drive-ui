@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'clients-rides-active',
@@ -24,11 +25,11 @@ import {Component, OnInit} from '@angular/core';
           </thead>
           <tbody *ngFor="let ride of rides">
           <tr data-toggle="modal" data-target="#orderModal">
-            <th>{{ride.id}}</th>
-            <td>{{ride.dateIn}}</td>
-            <td>{{ride.from}}</td>
-            <td>{{ride.to}}</td>
-            <td>{{ride.status}}</td>
+            <th>{{ride.clientLogin}}</th>
+            <td>{{ride.rideIn}}</td>
+            <td>{{ride.fromAddress.city}} {{ride.fromAddress.street}} {{ride.fromAddress.building}}</td>
+            <td>{{ride.toAddress.city}} {{ride.toAddress.street}} {{ride.toAddress.building}}</td>
+            <td>{{ride.state}}</td>
           </tr>
           </tbody>
         </table>
@@ -41,36 +42,18 @@ import {Component, OnInit} from '@angular/core';
 })
 export class RidesActiveComponent implements OnInit {
 
-  rides = [
-    {id:12, dateIn:'09-11-2017 12:40', from:'Спасск-Дальний Парковая 29/1', to:'Спасск-Дальний Парковая 29/1', status:'active waitclient'},
-    {id:14, dateIn:'09-11-2017 12:40', from:'Спасск-Дальний Парковая 29/1', to:'Спасск-Дальний Парковая 29/1', status:'inactive waitdriver'},
-    {id:17, dateIn:'09-11-2017 12:40', from:'Спасск-Дальний Парковая 29/1', to:'Спасск-Дальний Парковая 29/1', status:'active waitclient'},
-    {id:24, dateIn:'09-11-2017 12:40', from:'Спасск-Дальний Парковая 29/1', to:'Спасск-Дальний Парковая 29/1', status:'active waitclient'},
-    {id:26, dateIn:'09-11-2017 12:40', from:'Спасск-Дальний Парковая 29/1', to:'Спасск-Дальний Парковая 29/1', status:'active waitclient'},
-    {id:28, dateIn:'09-11-2017 12:40', from:'Спасск-Дальний Парковая 29/1', to:'Спасск-Дальний Парковая 29/1', status:'active waitclient'},
-    {id:12, dateIn:'09-11-2017 12:40', from:'Спасск-Дальний Парковая 29/1', to:'Спасск-Дальний Парковая 29/1', status:'active waitclient'},
-    {id:12, dateIn:'09-11-2017 12:40', from:'Спасск-Дальний Парковая 29/1', to:'Спасск-Дальний Парковая 29/1', status:'active waitclient'},
-    {id:12, dateIn:'09-11-2017 12:40', from:'Спасск-Дальний Парковая 29/1', to:'Спасск-Дальний Парковая 29/1', status:'active waitclient'},
-    {id:12, dateIn:'09-11-2017 12:40', from:'Спасск-Дальний Парковая 29/1', to:'Спасск-Дальний Парковая 29/1', status:'active waitclient'},
-    {id:12, dateIn:'09-11-2017 12:40', from:'Спасск-Дальний Парковая 29/1', to:'Спасск-Дальний Парковая 29/1', status:'active waitclient'},
-    {id:12, dateIn:'09-11-2017 12:40', from:'Спасск-Дальний Парковая 29/1', to:'Спасск-Дальний Парковая 29/1', status:'active waitclient'},
-    {id:12, dateIn:'09-11-2017 12:40', from:'Спасск-Дальний Парковая 29/1', to:'Спасск-Дальний Парковая 29/1', status:'active waitclient'},
-    {id:12, dateIn:'09-11-2017 12:40', from:'Спасск-Дальний Парковая 29/1', to:'Спасск-Дальний Парковая 29/1', status:'active waitclient'},
-    {id:12, dateIn:'09-11-2017 12:40', from:'Спасск-Дальний Парковая 29/1', to:'Спасск-Дальний Парковая 29/1', status:'active waitclient'},
-    {id:12, dateIn:'09-11-2017 12:40', from:'Спасск-Дальний Парковая 29/1', to:'Спасск-Дальний Парковая 29/1', status:'active waitclient'},
-    {id:12, dateIn:'09-11-2017 12:40', from:'Спасск-Дальний Парковая 29/1', to:'Спасск-Дальний Парковая 29/1', status:'active waitclient'},
-    {id:12, dateIn:'09-11-2017 12:40', from:'Спасск-Дальний Парковая 29/1', to:'Спасск-Дальний Парковая 29/1', status:'active waitclient'},
-    {id:12, dateIn:'09-11-2017 12:40', from:'Спасск-Дальний Парковая 29/1', to:'Спасск-Дальний Парковая 29/1', status:'active waitclient'},
-    {id:12, dateIn:'09-11-2017 12:40', from:'Спасск-Дальний Парковая 29/1', to:'Спасск-Дальний Парковая 29/1', status:'active waitclient'},
+  rides: any = [];
 
-  ];
-
-  constructor() {
+  constructor(private http: HttpClient) {
   }
 
   ngOnInit() {
+    setInterval(() => {
+      this.http.get('http://localhost:8087/api/ride/active').subscribe(data => {
+        this.rides = data;
+      });
+    }, 10000);
   }
-
 }
 
 

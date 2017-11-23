@@ -19,20 +19,19 @@ import {HttpClient} from "@angular/common/http";
           <h6>From</h6>
 
           <div class="form-group">
-            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="State" name="fromState"
-                   ngModel>
+            <input type="text" class="form-control" placeholder="State" name="fromState" ngModel>
           </div>
 
           <div class="form-group">
-            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="City">
+            <input type="text" class="form-control" placeholder="City" name="fromCity" ngModel>
           </div>
 
           <div class="form-group">
-            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Street">
+            <input type="text" class="form-control" placeholder="Street" name="fromStreet" ngModel>
           </div>
 
           <div class="form-group">
-            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Building">
+            <input type="text" class="form-control" placeholder="Building" name="fromBuilding" ngModel>
           </div>
         </div>
 
@@ -40,19 +39,19 @@ import {HttpClient} from "@angular/common/http";
           <h6>To</h6>
 
           <div class="form-group">
-            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="State">
+            <input type="text" class="form-control" placeholder="State" name="toState" ngModel>
           </div>
 
           <div class="form-group">
-            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="City">
+            <input type="text" class="form-control" placeholder="City" name="toCity" ngModel>
           </div>
 
           <div class="form-group">
-            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Street">
+            <input type="text" class="form-control" placeholder="Street" name="toStreet" ngModel>
           </div>
 
           <div class="form-group">
-            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Building">
+            <input type="text" class="form-control" placeholder="Building" name="toBuilding" ngModel>
           </div>
 
         </div>
@@ -70,22 +69,22 @@ import {HttpClient} from "@angular/common/http";
 
           <div class="col col-md-6 block">
             <div class="form-group">
-              <input type="datetime-local" class="form-control" id="exampleInputEmail1">
+              <input type="datetime-local" class="form-control" name="rideIn" ngModel>
               <small id="emailHelp" class="form-text text-muted">Ride time</small>
             </div>
 
             <div class="form-group">
-              <input type="number" class="form-control" id="exampleInputEmail1" placeholder="Men in car">
+              <input type="number" class="form-control" placeholder="Adult in car" name="adultInCar" ngModel>
             </div>
 
             <div class="form-group">
-              <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Dist from">
+              <input type="text" class="form-control" placeholder="Dist from" name="distFrom" ngModel>
             </div>
           </div>
 
           <div class="col col-md-6 block">
             <div class="form-group">
-              <select class="form-control" id="exampleSelect1">
+              <select class="form-control" name="prepaid" ngModel>
                 <option>N</option>
                 <option>Y</option>
               </select>
@@ -93,11 +92,11 @@ import {HttpClient} from "@angular/common/http";
             </div>
 
             <div class="form-group">
-              <input type="number" class="form-control" id="exampleInputEmail1" placeholder="Children in car">
+              <input type="number" class="form-control" placeholder="Children in car" name="childrenInCar" ngModel>
             </div>
 
             <div class="form-group">
-              <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Dist to">
+              <input type="text" class="form-control" placeholder="Dist to" name="distTo" ngModel>
             </div>
           </div>
         </div>
@@ -105,7 +104,7 @@ import {HttpClient} from "@angular/common/http";
         <div class="row">
           <div class="col col-md-12 block">
             <div class="form-group">
-              <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Comment">
+              <input type="text" class="form-control" placeholder="Comment" name="comment" ngModel>
             </div>
           </div>
         </div>
@@ -154,19 +153,19 @@ export class RidesAdditionComponent implements OnInit {
       var ride: any = {
         clientLogin: this.clientInfo.formClientId,
         fromAddress: {
-          state: "r",
-          city: "r",
-          street: "r",
-          building: "r"
+          state: form.fromState,
+          city: form.fromCity,
+          street: form.fromStreet,
+          building: form.fromBuilding
         },
         toAddress: {
-          state: "r",
-          city: "r",
-          street: "r",
-          building: "r"
+          state: form.toState,
+          city: form.toCity,
+          street: form.toStreet,
+          building: form.toBuilding
         },
-        adultInCar: 8,
-        childrenInCar: 8
+        distFrom: form.distFrom,
+        distTo: form.distTo
       };
 
       this.http.post('http://localhost:8087/api/ride/evaluate', ride)
@@ -177,11 +176,38 @@ export class RidesAdditionComponent implements OnInit {
   }
 
   onSubmit(form: any): void {
-    if (!this.clientInfo.clientLogin) {
+    if (!this.clientInfo.formClientId) {
       this.service.onAlertEvent.emit({alertType: 'error', alertMessage: 'Enter phone number'});
+    } else {
+      var ride: any = {
+        clientLogin: this.clientInfo.formClientId,
+        fromAddress: {
+          state: form.fromState,
+          city: form.fromCity,
+          street: form.fromStreet,
+          building: form.fromBuilding
+        },
+        toAddress: {
+          state: form.toState,
+          city: form.toCity,
+          street: form.toStreet,
+          building: form.toBuilding
+        },
+        distFrom: form.distFrom,
+        distTo: form.distTo,
+
+        adultInCar: form.adultInCar,
+        childrenInCar: form.childrenInCar,
+        rideIn: form.rideIn,
+        prepaid: form.prepaid,
+        comment: form.comment
+      };
+
+      this.http.post('http://localhost:8087/api/ride/new', ride)
+        .subscribe(data => {
+
+        });
     }
-    console.log('onSubmit client', this.clientInfo);
-    console.log('onSubmit form', form)
   }
 }
 
