@@ -143,7 +143,19 @@ export class RidesAdditionComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.http.get('http://localhost:8087/api/system/property/geoVersion')
+      .subscribe(data => {
+        var globalGeoVersion: any = data;
+        var localGeoData: any = JSON.parse(localStorage.getItem('geoData'));
+        var localGeoVersion: string = localGeoData ? localGeoData.geoVersion : '';
 
+        if (globalGeoVersion.value != localGeoVersion) {
+          this.http.get('http://localhost:8087/api/geo/all')
+            .subscribe(data => {
+              localStorage.setItem('geoData', JSON.stringify(data));
+            });
+        }
+      });
   }
 
   onPrice(form: any): void {
