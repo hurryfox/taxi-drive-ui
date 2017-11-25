@@ -36,7 +36,7 @@ import {SharedService} from "./dash/clients/shared.service";
           </div>
           
           <div class="btn-group">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">m.klimenko</button>
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">d.kolesnikov</button>
             <div class="dropdown-menu dropdown-menu-right">
               <button class="dropdown-item" type="button" href="#">Logout</button>
             </div>
