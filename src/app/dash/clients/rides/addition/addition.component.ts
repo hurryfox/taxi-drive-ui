@@ -19,15 +19,15 @@ import {HttpClient} from "@angular/common/http";
           <h6>From</h6>
 
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="State" name="fromState" ngModel>
+            <input [typeahead]="states" class="form-control" placeholder="State" name="fromState" autocomplete="off" ngModel>
+          </div>
+  
+          <div class="form-group">
+            <input [typeahead]="cities" class="form-control" placeholder="City" name="fromCity" autocomplete="off" ngModel>
           </div>
 
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="City" name="fromCity" ngModel>
-          </div>
-
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Street" name="fromStreet" ngModel>
+            <input [typeahead]="streets" class="form-control" placeholder="Street" name="fromStreet" autocomplete="off" ngModel>
           </div>
 
           <div class="form-group">
@@ -39,17 +39,17 @@ import {HttpClient} from "@angular/common/http";
           <h6>To</h6>
 
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="State" name="toState" ngModel>
+            <input [typeahead]="states"  type="text" class="form-control" placeholder="State" name="toState" autocomplete="off" ngModel>
           </div>
 
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="City" name="toCity" ngModel>
+            <input [typeahead]="cities" class="form-control" placeholder="City" name="toCity" autocomplete="off" ngModel>
           </div>
 
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Street" name="toStreet" ngModel>
+            <input [typeahead]="streets" class="form-control" placeholder="Street" name="toStreet" autocomplete="off" ngModel>
           </div>
-
+          
           <div class="form-group">
             <input type="text" class="form-control" placeholder="Building" name="toBuilding" ngModel>
           </div>
@@ -126,6 +126,11 @@ import {HttpClient} from "@angular/common/http";
 })
 
 export class RidesAdditionComponent implements OnInit {
+
+  states: any = [];
+  cities: any = [];
+  streets: any = [];
+
   clientInfo: any = {};
   priceEvaluationData: any = {};
 
@@ -153,8 +158,13 @@ export class RidesAdditionComponent implements OnInit {
           this.http.get('http://localhost:8087/api/geo/all')
             .subscribe(data => {
               localStorage.setItem('geoData', JSON.stringify(data));
+              localGeoData = data;
             });
         }
+
+        this.states = localGeoData.states.map(a => a.name);
+        this.cities = localGeoData.cities.map(a => a.name);
+        this.streets = localGeoData.streets.map(a => a.name);
       });
   }
 

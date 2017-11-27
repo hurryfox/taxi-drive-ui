@@ -49,9 +49,6 @@ export class RidesActiveComponent implements OnInit {
 
   ngOnInit() {
     this.getActiveRides();
-     setInterval(() => {
-       this.getActiveRides()
-     }, 10000);
   }
 
   getActiveRides(){

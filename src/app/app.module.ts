@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import {TypeaheadModule} from "ngx-bootstrap";
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header.component';
@@ -51,6 +52,7 @@ import {SharedService} from "./dash/clients/shared.service";
     ReactiveFormsModule,
     HttpClientModule,
     AngularFontAwesomeModule,
+    TypeaheadModule.forRoot(),
 
     CONST_ROUTING
   ],
