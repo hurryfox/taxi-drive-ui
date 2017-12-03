@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {SharedService} from "../../shared.service";
 import {HttpClient} from "@angular/common/http";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'clients-rides-addition',
@@ -19,11 +20,11 @@ import {HttpClient} from "@angular/common/http";
           <h6>From</h6>
 
           <div class="form-group">
-            <input [typeahead]="states" class="form-control" placeholder="State" name="fromState" autocomplete="off" ngModel>
+            <input [ngModel]="defaultFromState" [typeahead]="states" class="form-control" placeholder="State" name="fromState" autocomplete="off" ngModel>
           </div>
   
           <div class="form-group">
-            <input [typeahead]="cities" class="form-control" placeholder="City" name="fromCity" autocomplete="off" ngModel>
+            <input [ngModel]="defaultFromCity" [typeahead]="cities" class="form-control" placeholder="City" name="fromCity" autocomplete="off" ngModel>
           </div>
 
           <div class="form-group">
@@ -39,11 +40,11 @@ import {HttpClient} from "@angular/common/http";
           <h6>To</h6>
 
           <div class="form-group">
-            <input [typeahead]="states"  type="text" class="form-control" placeholder="State" name="toState" autocomplete="off" ngModel>
+            <input [ngModel]="defaultToState" [typeahead]="states"  type="text" class="form-control" placeholder="State" name="toState" autocomplete="off" ngModel>
           </div>
 
           <div class="form-group">
-            <input [typeahead]="cities" class="form-control" placeholder="City" name="toCity" autocomplete="off" ngModel>
+            <input [ngModel]="defaultToCity" [typeahead]="cities" class="form-control" placeholder="City" name="toCity" autocomplete="off" ngModel>
           </div>
 
           <div class="form-group">
@@ -113,6 +114,7 @@ import {HttpClient} from "@angular/common/http";
       <div class="row">
         <div class="col col-md-6 block">
           <div *ngIf="priceEvaluationData.price">Ride price: <b>{{priceEvaluationData.price}}</b></div>
+          <div *ngIf="priceEvaluationData.message">Message: <b>{{priceEvaluationData.message}}</b></div>
         </div>
         <div class="col col-md-6 block">
           <div class="form-group float-right">
@@ -131,10 +133,15 @@ export class RidesAdditionComponent implements OnInit {
   cities: any = [];
   streets: any = [];
 
+  defaultFromState: String = 'Приморский край';
+  defaultToState: String = 'Приморский край';
+  defaultFromCity: String = 'Спасск-Дальний';
+  defaultToCity: String = 'Спасск-Дальний';
+
   clientInfo: any = {};
   priceEvaluationData: any = {};
 
-  constructor(private service: SharedService, private http: HttpClient,) {
+  constructor(private service: SharedService, private http: HttpClient, private datePipe: DatePipe) {
     service.onClientEvent.subscribe(
       (data) => {
         this.clientInfo = data;
@@ -191,8 +198,14 @@ export class RidesAdditionComponent implements OnInit {
       };
 
       this.http.post('http://localhost:8087/api/ride/evaluate', ride)
-        .subscribe(data => {
-          this.service.priceEvaluationData.emit(data);
+        .subscribe((data: any) => {
+
+          if(data.status == 'OK') {
+            this.service.priceEvaluationData.emit(data);
+          } else if (data.status == 'ERROR') {
+            this.service.priceEvaluationData.emit(data);
+          }
+
         });
     }
   }
@@ -201,6 +214,8 @@ export class RidesAdditionComponent implements OnInit {
     if (!this.clientInfo.formClientId) {
       this.service.onAlertEvent.emit({alertType: 'error', alertMessage: 'Enter phone number'});
     } else {
+      var dateIn = this.datePipe.transform(new Date(), 'yyyy-MM-ddTHH:mm');
+
       var ride: any = {
         clientLogin: this.clientInfo.formClientId,
         fromAddress: {
@@ -220,7 +235,8 @@ export class RidesAdditionComponent implements OnInit {
 
         adultInCar: form.adultInCar,
         childrenInCar: form.childrenInCar,
-        rideIn: form.rideIn,
+        dateIn: dateIn,
+        rideIn: form.rideIn == '' ? dateIn : form.rideIn,
         prepaid: form.prepaid,
         comment: form.comment
       };

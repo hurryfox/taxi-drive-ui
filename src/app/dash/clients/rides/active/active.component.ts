@@ -17,7 +17,7 @@ import {HttpClient} from "@angular/common/http";
           <thead>
           <tr>
             <th>#</th>
-            <th>Date in</th>
+            <th>Ride in</th>
             <th>From</th>
             <th>To</th>
             <th>Status</th>

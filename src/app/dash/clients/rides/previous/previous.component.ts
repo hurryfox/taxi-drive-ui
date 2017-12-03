@@ -16,16 +16,16 @@ import {SharedService} from "../../shared.service";
         <table class="table table-sm table-hover table-gray">
           <thead>
           <tr>
-            <th>Date in</th>
+            <th>Ride in</th>
             <th>From</th>
             <th>To</th>
           </tr>
           </thead>
           <tbody *ngFor="let ride of previousRides">
           <tr>
-            <td>{{ride.dateIn}}</td>
-            <td>{{ride.fromAddress.state}} {{ride.fromAddress.city}} {{ride.fromAddress.street}} {{ride.fromAddress.building}}</td>
-            <td>{{ride.toAddress.state}} {{ride.toAddress.city}} {{ride.toAddress.street}} {{ride.toAddress.building}}</td>
+            <td>{{ride.rideIn}}</td>
+            <td>{{ride.fromAddress.city}} {{ride.fromAddress.street}} {{ride.fromAddress.building}}</td>
+            <td>{{ride.toAddress.city}} {{ride.toAddress.street}} {{ride.toAddress.building}}</td>
           </tr>
           </tbody>
         </table>

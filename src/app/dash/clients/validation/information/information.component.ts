@@ -84,7 +84,7 @@ export class ValidationInformationComponent implements OnInit {
         if(data.clientData.clientType == 'vip') { this.vipUser = 'true' }
         else { this.vipUser = 'false' }
 
-        if(data.clientData.nextRideFree == (data.clientData.ridesAmount + 1) as String) { this.nextRideFree = 'true' }
+        if(data.clientData.isRideFree) { this.nextRideFree = 'true' }
         else { this.nextRideFree = 'false' }
     } else {
         this.numberInBase = 'in_process';
