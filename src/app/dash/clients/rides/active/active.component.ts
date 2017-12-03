@@ -35,7 +35,7 @@ import {HttpClient} from "@angular/common/http";
         </table>
       </div>
     </div>
-    
+
     <!--modal components-->
     <rides-active-modal></rides-active-modal>
   `
@@ -43,18 +43,28 @@ import {HttpClient} from "@angular/common/http";
 export class RidesActiveComponent implements OnInit {
 
   rides: any = [];
+  activeRidesChecker: any = null;
 
   constructor(private http: HttpClient) {
   }
 
   ngOnInit() {
     this.getActiveRides();
+    this.activeRidesChecker = setInterval(() => {
+      this.getActiveRides()
+    }, 10000);
   }
 
-  getActiveRides(){
+  getActiveRides() {
     this.http.get('http://localhost:8087/api/ride/active').subscribe(data => {
       this.rides = data;
     });
+  }
+
+  ngOnDestroy() {
+    if (this.activeRidesChecker) {
+      clearInterval(this.activeRidesChecker)
+    }
   }
 }
 
