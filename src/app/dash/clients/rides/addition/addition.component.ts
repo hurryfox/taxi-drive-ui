@@ -79,7 +79,7 @@ import {DatePipe} from "@angular/common";
             </div>
 
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Dist from" name="distFrom" ngModel>
+              <input [typeahead]="districts" class="form-control" placeholder="Dist from" name="distFrom" ngModel>
             </div>
           </div>
 
@@ -97,7 +97,7 @@ import {DatePipe} from "@angular/common";
             </div>
 
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Dist to" name="distTo" ngModel>
+              <input [typeahead]="districts" class="form-control" placeholder="Dist to" name="distTo" ngModel>
             </div>
           </div>
         </div>
@@ -132,6 +132,7 @@ export class RidesAdditionComponent implements OnInit {
   states: any = [];
   cities: any = [];
   streets: any = [];
+  districts: any = [];
 
   defaultFromState: String = 'Приморский край';
   defaultToState: String = 'Приморский край';
@@ -172,6 +173,7 @@ export class RidesAdditionComponent implements OnInit {
         this.states = localGeoData.states.map(a => a.name);
         this.cities = localGeoData.cities.map(a => a.name);
         this.streets = localGeoData.streets.map(a => a.name);
+        this.districts = localGeoData.districts.map(a => a.name);
       });
   }
 
