@@ -79,7 +79,7 @@ import {DatePipe} from "@angular/common";
             </div>
 
             <div class="form-group">
-              <input [typeahead]="districts" class="form-control" placeholder="Dist from" name="distFrom" ngModel>
+              <input [typeahead]="districts" class="form-control" placeholder="Dist from" name="fromDistrict" ngModel>
             </div>
           </div>
 
@@ -97,7 +97,7 @@ import {DatePipe} from "@angular/common";
             </div>
 
             <div class="form-group">
-              <input [typeahead]="districts" class="form-control" placeholder="Dist to" name="distTo" ngModel>
+              <input [typeahead]="districts" class="form-control" placeholder="Dist to" name="toDistrict" ngModel>
             </div>
           </div>
         </div>
@@ -187,16 +187,16 @@ export class RidesAdditionComponent implements OnInit {
           state: form.fromState,
           city: form.fromCity,
           street: form.fromStreet,
-          building: form.fromBuilding
+          building: form.fromBuilding,
+          district: form.fromDistrict
         },
         toAddress: {
           state: form.toState,
           city: form.toCity,
           street: form.toStreet,
-          building: form.toBuilding
-        },
-        distFrom: form.distFrom,
-        distTo: form.distTo
+          building: form.toBuilding,
+          district: form.toDistrict
+        }
       };
 
       this.http.post('http://localhost:8087/api/ride/evaluate', ride)
@@ -224,16 +224,16 @@ export class RidesAdditionComponent implements OnInit {
           state: form.fromState,
           city: form.fromCity,
           street: form.fromStreet,
-          building: form.fromBuilding
+          building: form.fromBuilding,
+          district: form.fromDistrict
         },
         toAddress: {
           state: form.toState,
           city: form.toCity,
           street: form.toStreet,
-          building: form.toBuilding
+          building: form.toBuilding,
+          district: form.toDistrict
         },
-        distFrom: form.distFrom,
-        distTo: form.distTo,
 
         adultInCar: form.adultInCar,
         childrenInCar: form.childrenInCar,
