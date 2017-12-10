@@ -1,0 +1,168 @@
+<div class="container-fluid">
+
+  <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Clients</h2>
+        </div>
+        <div class="col-md-6 text-right">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addClient">Add</button>
+        </div>
+      </div>
+
+
+      <table class="table table-sm tdschetchik">
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>Client Login</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Rides Amount</th>
+          <th>Client Type</th>
+        </tr>
+        </thead>
+        <tbody *ngFor="let client of clients">
+
+        <tr>
+          <td>{{client.clientLogin}}</td>
+          <td>{{client.firstName}}</td>
+          <td>{{client.lastName}}</td>
+          <td>{{client.ridesAmount}}</td>
+          <td>{{client.clientType}}</td>
+          <td><a data-toggle="modal" data-target="#editClient"><i class="fa fa-pencil-square-o"></i></a></td>
+        </tr>
+
+        </tbody>
+        <tfoot></tfoot>
+      </table>
+
+      <div id="addClient" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog" tabindex="-1"
+           aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <h4 class="modal-title">
+                Add client
+              </h4>
+            </div>
+
+            <div class="modal-body">
+              <form class="form-horizontal" role="form" #addMountForm="ngForm" (ngSubmit)="onSubmit(addMountForm)">
+
+                <div class="form-group">
+                  <label class="col-sm-2 control-label" for="inputLogin">Login</label>
+                  <div class="col-sm-12"><input type="text" class="form-control" id="inputLogin" name="clientLogin"
+                                                placeholder="Login" ngModel/>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-sm-2 control-label" for="inputFirstName">First name</label>
+                  <div class="col-sm-12"><input type="text" class="form-control" id="inputFirstName" name="firstName"
+                                                placeholder="First name" ngModel/>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-sm-2 control-label" for="inputLastName">Last name</label>
+                  <div class="col-sm-12"><input type="text" class="form-control" id="inputLastName" name="lastName"
+                                                placeholder="Last name" ngModel/>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-sm-2 control-label" for="inputClientType">Client type</label>
+                  <div class="col-sm-2">
+                    <input type="checkbox" value="" id="inputClientType" name="clientType" ngModel/> VIP
+
+                  </div>
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal" id="reset">
+                    Close
+                  </button>
+                  <button type="submit" class="btn btn-primary" id="save">
+                    Save
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  <div id="editClient" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog" tabindex="-1"
+       aria-hidden="true" *ngFor="let client of clients">
+    <form class="form-horizontal" role="form" #editMountForm="ngForm">
+      <div class="modal-dialog modal-lg">
+
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <h4 class="modal-title">
+              Edit client
+            </h4>
+          </div>
+
+          <div class="modal-content">
+
+            <div class="form-group">
+              <label class="col-sm-12 control-label" for="editLogin">Old login: {{client.clientLogin}}</label>
+              <div class="col-sm-12"><input type="text" class="form-control" id="editLogin" name="clientLogin"
+                                            placeholder="New login" ngModel/>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-12 control-label" for="editFirstName">Old first name: {{client.firstName}}</label>
+              <div class="col-sm-12"><input type="text" class="form-control" id="editFirstName" name="firstName"
+                                            placeholder="New first name" ngModel/>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-12 control-label" for="editLastName">Last name</label>
+              <div class="col-sm-12"><input type="text" class="form-control" id="editLastName" name="lastName"
+                                            placeholder="Last name" ngModel/>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-12 control-label" for="editClientType">Client type</label>
+              <div class="col-sm-2">
+                <input type="checkbox" value="" id="editClientType" name="clientType" ngModel/> VIP
+
+              </div>
+            </div>
+
+            <div class="form-group">
+              <button class="delete" title="delete client"
+                      (click)="delete(client)">x</button>
+            </div>
+
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              Close
+            </button>
+            <button type="submit" class="btn btn-primary">
+              Save
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </form>
+  </div>
+
+</div>
+
+
+
+

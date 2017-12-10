@@ -1,0 +1,13 @@
+.tdschetchik {
+  counter-reset: schetchik;
+}
+
+.tdschetchik tbody tr {
+  counter-increment: schetchik;
+}
+
+.tdschetchik tbody tr:before {
+  content: counter(schetchik);
+  display: table-cell;
+  vertical-align: middle;
+}

@@ -7,13 +7,21 @@ declare const globalUrl:any;
 
 @Component({
   selector: 'app-dash-admin',
-  styles: [],
+  styleUrls: ['/admin.component.css'],
   templateUrl: '/admin.component.html'
 
 })
 export class AdminDashComponent implements OnInit {
 clients: any;
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+
+    private messageService: MessageService) { }
+  /** Log a HeroService message with the MessageService */
+  private log(message: string) {
+    this.messageService.add('HeroService: ' + message);
+  }
+
 
   ngOnInit(): void {
     let headers = new HttpHeaders().set('Authorization', 'Bearer ' + keycloak.token);
@@ -21,6 +29,8 @@ clients: any;
     this.http.get(globalUrl + '/api/client/all', {headers: headers}).subscribe(data => {
       this.clients = data;
     });
+
+
   }
 
   onSubmit(form: NgForm) {
@@ -39,4 +49,12 @@ clients: any;
       }
     );
   }
+
+  onEdit(form: NgForm) {
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    let url = globalUrl + '/api/client';
+
+    this.http.delete(url, JSON.stringify(form.value)).subscribe()
+  }
 }
+
