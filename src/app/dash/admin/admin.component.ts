@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+///<reference path="../../../../node_modules/@types/selenium-webdriver/http.d.ts"/>
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { NgForm } from "@angular/forms";
 
 declare const keycloak:any;
 declare const globalUrl:any;
+
+let del = {"clientLogin": "+77"};
 
 @Component({
   selector: 'app-dash-admin',
@@ -11,15 +14,16 @@ declare const globalUrl:any;
   templateUrl: '/admin.component.html'
 
 })
-export class AdminDashComponent implements OnInit {
-clients: any;
-  constructor(
-    private http: HttpClient,
 
-    private messageService: MessageService) { }
-  /** Log a HeroService message with the MessageService */
-  private log(message: string) {
-    this.messageService.add('HeroService: ' + message);
+
+
+export class AdminDashComponent implements OnInit {
+  clients: any;
+
+
+
+
+  constructor(private http: HttpClient) {
   }
 
 
@@ -31,7 +35,16 @@ clients: any;
     });
 
 
+    this.http.delete(globalUrl + '/api/client', del).subscribe(
+      del => {
+        console.log(del);
+      },
+      err => {
+        console.log("Error occured");
+      }
+    );
   }
+
 
   onSubmit(form: NgForm) {
 
@@ -50,11 +63,5 @@ clients: any;
     );
   }
 
-  onEdit(form: NgForm) {
-    let headers = new HttpHeaders().set('Content-Type', 'application/json');
-    let url = globalUrl + '/api/client';
-
-    this.http.delete(url, JSON.stringify(form.value)).subscribe()
-  }
 }
 
