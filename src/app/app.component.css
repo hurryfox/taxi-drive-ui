@@ -59,3 +59,17 @@ h6 {
 .alert-custom {
   height:100%;
 }
+
+.ml-10 {
+  margin-left: 6rem !important;
+}
+
+.anchor-button {
+   cursor: pointer;
+   color: #007bff !important;
+}
+
+.anchor-button:focus,
+.anchor-button:hover {
+    color: #3636ab !important;
+}
