@@ -8,7 +8,7 @@ import {SharedService} from "../../clients/shared.service";
   template: `
     <div class="row">
       <div class="col-md-6">
-        <h2 class="ml-3">Cities geo table</h2>
+        <h2 class="ml-3">Cities</h2>
       </div>
       <div class="col-md-6 text-right">
         <button type="button" class="btn btn-primary btn-fix-size" (click)="refreshTable()">Refresh</button>
@@ -38,7 +38,6 @@ import {SharedService} from "../../clients/shared.service";
               <i *ngIf="!city.deleted" class="fa fa-trash-o anchor-button" (click)="onDeleteClick(city.id)"></i>
               <i *ngIf="city.deleted" class="fa fa-times"></i>
             </td>
-
           </tr>
           </tbody>
         </table>
@@ -99,10 +98,8 @@ import {SharedService} from "../../clients/shared.service";
             </div>
           </form>
         </div>
-
       </div>
     </div>
-
   `
 })
 export class GeoCitiesComponent implements OnInit {
@@ -111,7 +108,7 @@ export class GeoCitiesComponent implements OnInit {
   states: any = [];
   stateNames: any = [];
   defaultStateName: String = 'Приморский край';
-  alertMessage: any = {type: '', message: 'Error'};
+  alertMessage: any = {type: '', message: ''};
 
   constructor(private http: HttpClient, private service: SharedService) {
   }
@@ -154,6 +151,7 @@ export class GeoCitiesComponent implements OnInit {
   }
 
   onClose(form: any): void {
+    this.alertMessage = {type: '', message: ''};
     form.reset();
   }
 
