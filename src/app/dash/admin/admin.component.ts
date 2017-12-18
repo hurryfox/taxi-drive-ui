@@ -1,12 +1,13 @@
 ///<reference path="../../../../node_modules/@types/selenium-webdriver/http.d.ts"/>
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { NgForm } from "@angular/forms";
+
 
 declare const keycloak:any;
 declare const globalUrl:any;
 
-let del = {"clientLogin": "+77"};
+
 
 @Component({
   selector: 'app-dash-admin',
@@ -19,9 +20,7 @@ let del = {"clientLogin": "+77"};
 
 export class AdminDashComponent implements OnInit {
   clients: any;
-
-
-
+  del: {"clientLogin": "+77"};
 
   constructor(private http: HttpClient) {
   }
@@ -34,17 +33,18 @@ export class AdminDashComponent implements OnInit {
       this.clients = data;
     });
 
-
-    this.http.delete(globalUrl + '/api/client', del).subscribe(
-      del => {
-        console.log(del);
-      },
-      err => {
-        console.log("Error occured");
-      }
-    );
   }
 
+  clicDelete() {
+    this.http.delete(globalUrl + '/api/client', this.del).subscribe(
+    del => {
+    console.log(del);
+    },
+  err => {
+    console.log("Error occured");
+    }
+    );
+  }
 
   onSubmit(form: NgForm) {
 

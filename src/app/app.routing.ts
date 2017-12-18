@@ -11,7 +11,7 @@ const MAINMENU_ROUTES: Routes = [
   { path: 'dash', component: DashComponent, children:[
        { path: 'clients', component: ClientsDashComponent },
        { path: 'drivers', component: DriversDashComponent },
-       { path: 'admin', component: AdminDashComponent }
+       { path: 'admin', component: AdminDashComponent}
      ]
   },
   { path: 'settings', component: SettingsComponent },

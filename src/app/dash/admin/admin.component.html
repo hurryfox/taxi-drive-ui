@@ -97,8 +97,8 @@
       </div>
 
       <div id="editClient" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog" tabindex="-1"
-       aria-hidden="true" *ngFor="let client of clients">
-    <form class="form-horizontal" role="form" #editMountForm="ngForm">
+         aria-hidden="true">
+    <form class="form-horizontal" role="form">
       <div class="modal-dialog modal-lg">
 
         <div class="modal-content">
@@ -112,21 +112,21 @@
           <div class="modal-body">
 
             <div class="form-group">
-              <label class="col-sm-12 control-label" for="editLogin">Old login: {{client.clientLogin}}</label>
+              <label class="col-sm-12 control-label" for="editLogin">Old login:{{this.clientLogin}}</label>
               <div class="col-sm-12"><input type="text" class="form-control" id="editLogin" name="clientLogin"
                                             placeholder="New login" ngModel/>
               </div>
             </div>
 
             <div class="form-group">
-              <label class="col-sm-12 control-label" for="editFirstName">Old first name: {{client.firstName}}</label>
+              <label class="col-sm-12 control-label" for="editFirstName">Old first name: </label>
               <div class="col-sm-12"><input type="text" class="form-control" id="editFirstName" name="firstName"
                                             placeholder="New first name" ngModel/>
               </div>
             </div>
 
             <div class="form-group">
-              <label class="col-sm-12 control-label" for="editLastName">Old last name: {{client.lastName}}</label>
+              <label class="col-sm-12 control-label" for="editLastName">Old last name:}</label>
               <div class="col-sm-12"><input type="text" class="form-control" id="editLastName" name="lastName"
                                             placeholder="Last name" ngModel/>
               </div>
@@ -149,7 +149,7 @@
             <button type="submit" class="btn btn-primary">
               Save
             </button>
-            <button class="btn btn-danger" type="submit" title="delete client" id="del">Удалить</button>
+            <button class="btn btn-danger" type="submit" title="delete client" id="del" (click)="clickDelete()">Удалить</button>
           </div>
 
 

@@ -1,3 +1,9 @@
-<p>
-  settings works!
-</p>
+<div>
+  <ul>
+    <li *ngFor="let client of clients">
+      {{client.clientLogin}}
+    </li>
+  </ul>
+  <button (click)="getClient()">Get</button>
+  <button (click)="clickDel()">Del</button>
+</div>

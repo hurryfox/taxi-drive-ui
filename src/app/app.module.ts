@@ -21,6 +21,7 @@ import {ValidationInformationComponent} from "./dash/clients/validation/informat
 import {RidesAdditionComponent} from "./dash/clients/rides/addition/addition.component";
 import {ActiveModalComponent} from "./dash/clients/rides/active/modal.component";
 import {SharedService} from "./dash/clients/shared.service";
+import {HttpModule} from "@angular/http";
 
 @NgModule({
   declarations: [
@@ -43,9 +44,10 @@ import {SharedService} from "./dash/clients/shared.service";
 
   SettingsComponent,
 
-  HelpComponent
+  HelpComponent,
   ],
   imports: [
+    HttpModule,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
