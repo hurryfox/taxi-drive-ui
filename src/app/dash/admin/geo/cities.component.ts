@@ -11,37 +11,11 @@ import {SharedService} from "../../clients/shared.service";
         <h2 class="ml-3">Cities</h2>
       </div>
       <div class="col-md-6 text-right">
-        <button type="button" class="btn btn-primary btn-fix-size" (click)="refreshTable()">Refresh</button>
-        <button type="button" class="btn btn-primary btn-fix-size" data-toggle="modal" data-target="#addCity">Add
-        </button>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col col-md-12">
-        <table class="table table-sm table-hover table-gray">
-          <thead>
-          <tr>
-            <th>#</th>
-            <th>Id</th>
-            <th>Name</th>
-            <th>State</th>
-            <th></th>
-          </tr>
-          </thead>
-          <tbody *ngFor="let city of cities; let i = index">
-          <tr data-toggle="modal" data-target="#orderModal">
-            <th>{{i + 1}}</th>
-            <th>{{city.id}}</th>
-            <td>{{city.name}}</td>
-            <td>{{city.stateName}}</td>
-            <td>
-              <i *ngIf="!city.deleted" class="fa fa-trash-o anchor-button" (click)="onDeleteClick(city.id)"></i>
-              <i *ngIf="city.deleted" class="fa fa-times"></i>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
+        <button type="button" class="btn btn-primary btn-fix-size"
+        (click)="refreshTable()">Refresh
+      </button>
+      <button type="button" class="btn btn-primary btn-fix-size" data-toggle="modal" data-target="#addCity">Add
+      </button>
     </div>
 
 
@@ -88,7 +62,7 @@ import {SharedService} from "../../clients/shared.service";
                 <i class="fa fa-lg fa-exclamation-triangle color-wrong"></i>
                 {{alertMessage.message}}
               </div>
-              
+
               <button type="button" class="btn btn-default" data-dismiss="modal" (click)="onClose(f)" id="reset">
                 Close
               </button>

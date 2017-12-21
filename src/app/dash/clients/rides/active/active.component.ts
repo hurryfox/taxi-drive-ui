@@ -63,7 +63,7 @@ export class RidesActiveComponent implements OnInit {
 
   ngOnDestroy() {
     if (this.activeRidesChecker) {
-      clearInterval(this.activeRidesChecker)
+      clearInterval(this.activeRidesChecker);
     }
   }
 }

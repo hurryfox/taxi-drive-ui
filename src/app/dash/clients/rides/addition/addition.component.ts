@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {SharedService} from "../../shared.service";
-import {HttpClient} from "@angular/common/http";
-import {DatePipe} from "@angular/common";
+import {SharedService} from '../../shared.service';
+import {HttpClient} from '@angular/common/http';
+import {DatePipe} from '@angular/common';
+
 
 @Component({
   selector: 'clients-rides-addition',
@@ -20,11 +21,11 @@ import {DatePipe} from "@angular/common";
           <h6>From</h6>
 
           <div class="form-group">
-            <input [ngModel]="defaultFromState" [typeahead]="states" class="form-control" placeholder="State" name="fromState" autocomplete="off" ngModel>
-          </div>
-  
-          <div class="form-group">
-            <input [ngModel]="defaultFromCity" [typeahead]="cities" class="form-control" placeholder="City" name="fromCity" autocomplete="off" ngModel>
+            <input [ngModel]="defaultFromState" [typeahead]="states" class="form-control" placeholder="State" name="fromState"
+            autocomplete="off" ngModel>
+
+            <input [ngModel]="defaultFromCity" [typeahead]="cities" class="form-control" placeholder="City" name="fromCity"
+            autocomplete="off" ngModel>
           </div>
 
           <div class="form-group">
@@ -40,17 +41,19 @@ import {DatePipe} from "@angular/common";
           <h6>To</h6>
 
           <div class="form-group">
-            <input [ngModel]="defaultToState" [typeahead]="states"  type="text" class="form-control" placeholder="State" name="toState" autocomplete="off" ngModel>
+            <input [ngModel]="defaultToState" [typeahead]="states" type="text" class="form-control" placeholder="State" name="toState"
+                   autocomplete="off" ngModel>
           </div>
 
           <div class="form-group">
-            <input [ngModel]="defaultToCity" [typeahead]="cities" class="form-control" placeholder="City" name="toCity" autocomplete="off" ngModel>
+            <input [ngModel]="defaultToCity" [typeahead]="cities" class="form-control" placeholder="City" name="toCity" autocomplete="off"
+                   ngModel>
           </div>
 
           <div class="form-group">
             <input [typeahead]="streets" class="form-control" placeholder="Street" name="toStreet" autocomplete="off" ngModel>
           </div>
-          
+
           <div class="form-group">
             <input type="text" class="form-control" placeholder="Building" name="toBuilding" ngModel>
           </div>
