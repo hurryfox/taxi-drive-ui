@@ -132,20 +132,20 @@ import {SharedService} from "../../clients/shared.service";
           </div>
 
           <form #f="ngForm">
-            <div class="modal-body disabled">
+            <div class="modal-body">
               <div class="form-group">
-                <label class="col-sm-2 control-label" for="inputLogin">From</label>
-                <input class="form-control" name="from" autocomplete="off" placeholder={{editableRate.cityFromName}} disabled>
+                <label class="col-sm-2 control-label" for="inputLogin">City from</label>
+                <input class="form-control" [ngModel]="editableRate.cityFromName" name="cityFromName" readonly ngModel>
               </div>
 
-              <div class="form-group disabled">
-                <label class="col-sm-2 control-label" for="inputFirstName">To</label>
-                <input class="form-control" name="to" autocomplete="off" placeholder={{editableRate.cityToName}} disabled>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="inputFirstName">City to</label>
+                <input class="form-control" [ngModel]="editableRate.cityToName" name="cityToName" readonly ngModel>
               </div>
               
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="inputFirstName">Price</label>
-                <input class="form-control" name="price" placeholder={{editableRate.price}}
+                <input class="form-control" [ngModel]="editableRate.price" name="price"
                        autocomplete="off" ngModel>
               </div>
             </div>
@@ -166,7 +166,7 @@ import {SharedService} from "../../clients/shared.service";
               <button type="button" class="btn btn-default" data-dismiss="modal" (click)="onClose(f)" id="reset">
                 Close
               </button>
-              <button type="button" class="btn btn-primary" (click)="onSubmit(f)" id="save">
+              <button type="button" class="btn btn-primary" (click)="onAddSubmit(f)" id="save">
                 Save
               </button>
             </div>
@@ -182,7 +182,7 @@ export class RatesCtcComponent implements OnInit {
   cities: any = [];
   cityNames: any = [];
   alertMessage: any = {type: '', message: ''};
-  editableRate: any = {}
+  editableRate: any = {};
 
   constructor(private http: HttpClient, private service: SharedService) {
   }
@@ -222,15 +222,17 @@ export class RatesCtcComponent implements OnInit {
 
   onAddSubmit(form: any): void {
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
-    let url = 'http://localhost:8087/api/geo/street';
+    let url = 'http://localhost:8087/api/rate/ctc';
 
-    form.value.city = this.cities.find(city => city.name == form.value.cityName).id;
+    form.value.cityFrom = this.cities.find(city => city.name == form.value.cityFromName).id;
+    form.value.cityTo = this.cities.find(city => city.name == form.value.cityToName).id;
 
-    this.alertMessage = {type: 'load', message: 'Success'};
+    this.alertMessage = {type: 'load', message: ''};
 
     this.http.put(url, form.value, {headers: headers}).subscribe(
       res => {
         this.alertMessage = {type: 'success', message: 'Success'};
+        this.refreshTable()
       },
       err => {
         this.alertMessage = {type: 'error', message: 'Error'};
@@ -239,12 +241,14 @@ export class RatesCtcComponent implements OnInit {
   }
 
   onStartToEdit(rate: any): void {
+    console.log(rate);
     this.editableRate = rate;
   }
 
   onClose(form: any): void {
     this.alertMessage = {type: '', message: ''};
     form.reset();
+    this.editableRate = {}
   }
 
 }
