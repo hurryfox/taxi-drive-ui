@@ -19,7 +19,7 @@
 <script src='http://sso.vostok.systems/auth/js/keycloak.js' ></script>
 
 <script>
-  var keycloak = Keycloak({
+/*  var keycloak = Keycloak({
     url: 'http://sso.vostok.systems/auth',
     realm: 'vostok',
     //clientId: 'tda-ui',
@@ -31,13 +31,13 @@
     })
     .error(function () {
       console.log('[KEYCLOAK] Failed to execute KEYCLOAK init');
-    });
+    });*/
 </script>
 
 <script>
-  setInterval(function () {
+ /* setInterval(function () {
     keycloak.updateToken();
-  }, 10000);
+  }, 10000);*/
 </script>
 
 <app-root>Loading...</app-root>
