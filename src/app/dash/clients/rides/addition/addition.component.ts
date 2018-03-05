@@ -156,7 +156,7 @@ export class RidesAdditionComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.http.get('http://localhost:8087/api/system/property/geoVersion')
+    this.http.get('http://localhost:8087/api/system-property/geo_version')
       .subscribe(data => {
         var globalGeoVersion: any = data;
         var localGeoData: any = JSON.parse(localStorage.getItem('geoData'));
@@ -182,15 +182,15 @@ export class RidesAdditionComponent implements OnInit {
       this.service.onAlertEvent.emit({alertType: 'error', alertMessage: 'Enter phone number'});
     } else {
       var ride: any = {
-        clientLogin: this.clientInfo.formClientId,
-        fromAddress: {
+        client: this.clientInfo.formClientId,
+        rawFromAddress: {
           state: form.fromState,
           city: form.fromCity,
           street: form.fromStreet,
           building: form.fromBuilding,
           district: form.fromDistrict
         },
-        toAddress: {
+        rawToAddress: {
           state: form.toState,
           city: form.toCity,
           street: form.toStreet,
@@ -202,11 +202,9 @@ export class RidesAdditionComponent implements OnInit {
       this.http.post('http://localhost:8087/api/ride/evaluate', ride)
         .subscribe((data: any) => {
 
-          if(data.status == 'OK') {
+          // TODO: if status 200
             this.service.priceEvaluationData.emit(data);
-          } else if (data.status == 'ERROR') {
-            this.service.priceEvaluationData.emit(data);
-          }
+
 
         });
     }
